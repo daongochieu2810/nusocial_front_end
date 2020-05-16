@@ -29,14 +29,14 @@
 import Chart from "./Chart.js";
 import PieChart from "./PieChart.js";
 import Notes from "./Notes";
-import gql from 'graphql-tag';
-export const GET_DATA_SET = gql`
+//import gql from 'graphql-tag';
+/*export const GET_DATA_SET = gql`
   query getData {
     datas(where: { is_public: { _eq: false} }, order_by: { created_at: desc }) {
       label
       data
   }
- }`;
+ }`;*/
 export default {
   components: {
     Chart,
@@ -51,7 +51,7 @@ export default {
       error: null
     };
   },
-  mounted() {},
+  mounted() {}/*,
   apollo: {
       datas: {
         query: GET_DATA_SET,
@@ -59,7 +59,7 @@ export default {
           this.error = JSON.stringify(error.message)
         }
       }
-  }
+  }*/
 };
 </script>
 

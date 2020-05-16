@@ -4,16 +4,17 @@ import VueRouter from 'vue-router'
 import DashBoard from './components/Dashboard/DashBoard'
 import Community from './components/Community/Community'
 import SingleCommunity from './components/Community/SingleCommunity'
+import History from './components/History/History'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import wysiwyg from "vue-wysiwyg";
 import "vue-wysiwyg/dist/vueWysiwyg.css";
 import PerfectScrollbar from 'vue2-perfect-scrollbar'
 import 'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css'
-import ApolloClient from "apollo-client";
+/*import ApolloClient from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import VueApollo from "vue-apollo";
-Vue.use(VueApollo);
+Vue.use(VueApollo);*/
 Vue.use(PerfectScrollbar)
 Vue.use(wysiwyg, { hideModules: {}, 
   // if the image option is not set, images are inserted as base64
@@ -34,13 +35,13 @@ Vue.use(IconsPlugin)
 const routes = [
   { path: '/dashboard', component: DashBoard },
   { path: '/community', component: Community },
-  { path: '/community1', component: SingleCommunity }
-
+  { path: '/community1', component: SingleCommunity },
+  { path: '/history', component: History }
 ]
 const router = new VueRouter({
   routes
 })
-const getHeaders = () => {
+/*const getHeaders = () => {
   const headers = {};
    const token = window.localStorage.getItem('apollo-token');
    if (token) {
@@ -62,10 +63,10 @@ const getHeaders = () => {
  });
  const apolloProvider = new VueApollo({
   defaultClient: client,
-})
+})*/
 
 new Vue({
   router,
-  apolloProvider,
+  //apolloProvider,
   render: h => h(App),
 }).$mount('#app')

@@ -1,20 +1,24 @@
 <template>
 <div>
+   <transition @before-enter="enterStart" appear>
 <div id="row1">
- <Messages id="column11"/>
   <Posts id="column12"/>
+  <Statistics id="column11"/>
 </div>
+</transition>
+<transition @before-enter="enterStart" appear>
  <Announcements/>
+</transition>
 </div>
 </template>
 
 <script>
-import Messages from './Messages'
+import Statistics from './Statistics'
 import Announcements from './Announcements'
 import Posts from './Posts'
   export default {
     components: {
-      Messages,
+      Statistics,
       Announcements,
       Posts
     },
@@ -22,11 +26,16 @@ import Posts from './Posts'
       return {
        
       }
+    },
+    methods: {
+       enterStart: function(el) {
+      el.classList.add("testing-enter");
+    }
     }
   }
 </script>
 <style scoped>
-#row1{
+#row1, #row2{
   display: flex;
   flex-direction: row;
 }
@@ -35,5 +44,18 @@ import Posts from './Posts'
 #column12 {
   display: flex;
   flex-direction: column;
+}
+.testing-enter {
+  animation: enter 0.5s;
+}
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 </style>

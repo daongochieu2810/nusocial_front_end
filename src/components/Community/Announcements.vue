@@ -23,7 +23,8 @@
 </div>
 <div class="word-editor">
 <p style="font-size: 25px">New announcement</p>
-<wysiwyg />
+<wysiwyg v-model="newAnnouncement"/>
+ <b-button variant="outline-primary" style="margin-top: 10px" @click="testMake">Done</b-button>
 </div>
 </div>
 </template>
@@ -36,6 +37,7 @@
     },
     data() {
       return {
+          newAnnouncement: '',
           allRows: []
       }
     },
@@ -45,6 +47,11 @@
                 id: i
             })
         }
+    },
+    methods: {
+      testMake() {
+        console.log(this.newAnnouncement);
+      }
     }
   }
 </script>
@@ -122,6 +129,8 @@
     margin-top: -80px;
     border-radius: 10px;
     background-color: white;
+    display: flex;
+    flex-direction: column;
     color: black;
     border: 5px black;
     padding: 10px;

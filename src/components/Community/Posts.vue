@@ -2,7 +2,7 @@
 
 <div class="posts">
   <div class="headings">
-<p>Posts</p>
+<p>My posts</p>
  <p style="float: right"><b-button variant="outline-primary">Today</b-button></p>
  <p style="float: right"><b-button variant="outline-success">Last week</b-button></p>
 </div>
@@ -67,7 +67,7 @@
 </script>
 <style scoped>
 .posts {
-    margin-left: 40px;
+    margin-left: 120px;
     margin-top: 80px;
     background-color: black;
     border-radius: 10px;
