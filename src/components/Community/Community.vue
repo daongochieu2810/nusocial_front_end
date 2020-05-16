@@ -2,23 +2,18 @@
   <div>
     <transition-group @before-enter="enterStart" appear>
       <b-card-group deck v-for="row in allRows" :key="row.id" class="custom-row">
-        <b-card
-          v-for="card in row.allCards"
-          :key="card.id"
+      <router-link to="/community1"  v-for="card in row.allCards"
+          :key="card.id" class="mb-2"><b-card
           title="CS3233"
           img-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Competitive-Programming.jpg"
           img-alt="Image"
           img-top
           tag="article"
           style="max-width: 20rem;"
-          class="mb-2 custom-card"
+          class="custom-card"
         >
           <b-card-text>Best of best Best of best Best</b-card-text>
-
-          <b-button href="#" class="custom-button">
-            <p class="text">Go</p>
-          </b-button>
-        </b-card>
+        </b-card></router-link>
       </b-card-group>
     </transition-group>
   </div>
@@ -32,7 +27,7 @@ export default {
     };
   },
   mounted() {
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 5; i++) {
       this.allCards.push({
         id: i
       });
@@ -41,16 +36,15 @@ export default {
       allCards: this.allCards,
       id: 1
     });
-    let cards = [];
-    for (let i = 0; i < 7; i++) {
-      cards.push({
-        id: i + 7
-      });
-    }
     this.allRows.push({
-      allCards: cards,
-      id: 2
+      allCards: this.allCards,
+      id: 1
     });
+    this.allRows.push({
+      allCards: this.allCards,
+      id: 1
+    });
+    
   },
   methods: {
     enterStart: function(el) {

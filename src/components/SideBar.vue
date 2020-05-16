@@ -26,9 +26,10 @@ export default {
     };
   },
   mounted() {
-    if (this.$router.currentRoute.fullPath == "/dashboard") this.curr1 = true;
+    let currPath = this.$router.currentRoute.fullPath;
+    if (currPath == "/dashboard") this.curr1 = true;
     else this.curr1 = false;
-    if (this.$router.currentRoute.fullPath == "/community") this.curr2 = true;
+    if (currPath == "/community" || currPath == "/community1") this.curr2 = true;
     else this.curr2 = false;
   },
   watch: {
@@ -36,7 +37,7 @@ export default {
       console.log(from.path);
       if (to.path == "/dashboard") this.curr1 = true;
       else this.curr1 = false;
-      if (to.path == "/community") this.curr2 = true;
+      if (to.path == "/community" || to.path == "/community1") this.curr2 = true;
       else this.curr2 = false;
     }
   }

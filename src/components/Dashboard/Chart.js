@@ -1,5 +1,4 @@
 import {Line} from 'vue-chartjs'
-
 export default {
   extends: Line,
   data () {
@@ -8,7 +7,8 @@ export default {
       gradient2: null
     }
   },
-  props() {
+  props: {
+    data: Array
   },
   mounted () {
     this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
