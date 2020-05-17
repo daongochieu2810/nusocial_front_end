@@ -1,41 +1,40 @@
 <template>
-<div>
-   <transition @before-enter="enterStart" appear>
-<div id="row1">
-  <Posts id="column12"/>
-  <Statistics id="column11"/>
-</div>
-</transition>
-<transition @before-enter="enterStart" appear>
- <Announcements/>
-</transition>
-</div>
+  <div>
+    <transition @before-enter="enterStart" appear>
+      <div id="row1">
+        <Posts id="column12" />
+        <Statistics id="column11" style="align-self: right;margin-right: 10px" />
+      </div>
+    </transition>
+    <transition @before-enter="enterStart" appear>
+      <Announcements style="margin-right: 20px" />
+    </transition>
+  </div>
 </template>
 
 <script>
-import Statistics from './Statistics'
-import Announcements from './Announcements'
-import Posts from './Posts'
-  export default {
-    components: {
-      Statistics,
-      Announcements,
-      Posts
-    },
-    data() {
-      return {
-       
-      }
-    },
-    methods: {
-       enterStart: function(el) {
+import Statistics from "./Statistics";
+import Announcements from "./Announcements";
+import Posts from "./Posts";
+export default {
+  components: {
+    Statistics,
+    Announcements,
+    Posts
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    enterStart: function(el) {
       el.classList.add("testing-enter");
     }
-    }
   }
+};
 </script>
 <style scoped>
-#row1, #row2{
+#row1,
+#row2 {
   display: flex;
   flex-direction: row;
 }

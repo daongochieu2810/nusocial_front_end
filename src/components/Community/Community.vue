@@ -2,18 +2,19 @@
   <div>
     <transition-group @before-enter="enterStart" appear>
       <b-card-group deck v-for="row in allRows" :key="row.id" class="custom-row">
-      <router-link to="/community1"  v-for="card in row.allCards"
-          :key="card.id" class="mb-2"><b-card
-          title="CS3233"
-          img-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Competitive-Programming.jpg"
-          img-alt="Image"
-          img-top
-          tag="article"
-          style="max-width: 20rem;"
-          class="custom-card"
-        >
-          <b-card-text>Best of best Best of best Best</b-card-text>
-        </b-card></router-link>
+        <router-link to="/community1" v-for="card in row.allCards" :key="card.id" class="mb-2">
+          <b-card
+            title="CS3233"
+            img-src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Competitive-Programming.jpg"
+            img-alt="Image"
+            img-top
+            tag="article"
+            style="max-width: 20rem;"
+            class="custom-card"
+          >
+            <b-card-text>Best of best Best of best Best</b-card-text>
+          </b-card>
+        </router-link>
       </b-card-group>
     </transition-group>
   </div>
@@ -44,7 +45,6 @@ export default {
       allCards: this.allCards,
       id: 1
     });
-    
   },
   methods: {
     enterStart: function(el) {
@@ -55,9 +55,7 @@ export default {
 </script>
 <style scoped>
 .custom-card {
-  margin-top: 80px;
-  margin-left: 150px;
-  width: auto;
+  width: 15vw;
   height: auto;
   background-color: black;
   color: white;
@@ -71,7 +69,8 @@ export default {
   z-index: 1;
 }
 .custom-row {
-  margin-left: 100px;
+  margin-top: 80px;
+  margin-left: 120px;
   margin-right: 50px;
 }
 .custom-button {
