@@ -1,27 +1,36 @@
 <template>
-  <div tabindex="0" @blur="onBlur" class="sc-emoji-picker" ref="domNode">
+  <div
+    tabIndex="0"
+    @blur="onBlur"
+    class="sc-emoji-picker"
+    ref="domNode"
+  >
     <div class="sc-emoji-picker--content">
       <div v-for="category in emojiData" class="sc-emoji-picker--category" :key="category.name">
         <div class="sc-emoji-picker--category-title">{{category.name}}</div>
-        <span
-          v-for="emoji in category.emojis"
-          :key="emoji"
-          class="sc-emoji-picker--emoji"
-          @click="emojiClicked(emoji)"
-        >{{emoji}}</span>
+          <span
+            v-for="emoji in category.emojis"
+            :key="emoji"
+            class="sc-emoji-picker--emoji"
+            @click="emojiClicked(emoji)"
+          >
+            {{emoji}}
+          </span>
       </div>
     </div>
   </div>
 </template>
+
 <script>
-import EmojiConvertor from "emoji-js";
-import emojiData from "./emojiData";
+import EmojiConvertor from 'emoji-js'
+import emojiData from './emojiData'
+
 export default {
-  data() {
+  data () {
     return {
       emojiData,
       emojiConvertor: new EmojiConvertor()
-    };
+    }
   },
   props: {
     onBlur: {
@@ -34,23 +43,24 @@ export default {
     }
   },
   methods: {
-    emojiClicked(emoji) {
-      this.onEmojiPicked(emoji);
-      this.$refs.domNode.blur();
+    emojiClicked (emoji) {
+      this.onEmojiPicked(emoji)
+      this.$refs.domNode.blur()
     }
   },
-  mounted() {
-    const elem = this.$refs.domNode;
-    elem.style.opacity = 0;
+  mounted () {
+    const elem = this.$refs.domNode
+    elem.style.opacity = 0
     window.requestAnimationFrame(() => {
-      elem.style.transition = "opacity 350ms";
-      elem.style.opacity = 1;
-    });
-    this.$refs.domNode.forcus();
-    this.emojiConvertor.init_env();
+      elem.style.transition = 'opacity 350ms'
+      elem.style.opacity = 1
+    })
+    this.$refs.domNode.focus()
+    this.emojiConvertor.init_env()
   }
-};
+}
 </script>
+
 <style scoped>
 .sc-emoji-picker {
   position: absolute;
@@ -108,7 +118,7 @@ export default {
   cursor: pointer;
   vertical-align: middle;
   font-size: 28px;
-  transition: transform 60ms ease-out, -webkit-transform 60ms ease-out;
+  transition: transform 60ms ease-out,-webkit-transform 60ms ease-out;
 }
 
 .sc-emoji-picker--emoji:hover {

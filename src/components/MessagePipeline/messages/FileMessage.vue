@@ -1,15 +1,12 @@
 <template>
-  <div class="sc-message--file" :style="messageColors">
-    <div class="sc-message--file-icon">
-      <img :src="data.file.url" class="sc-image" />
+  <div class='sc-message--file' :style="messageColors">
+    <div class='sc-message--file-icon'>
+      <img :src="data.file.url" class="sc-image">
     </div>
-    <div class="sc-message--file-name" :style="messageColors">
-      <a :href="data.file.url ? data.file.url : '#'" target="_blank">{{data.file.name || ''}}</a>
+    <div class='sc-message--file-name' :style="messageColors">
+      <a :href="data.file.url ? data.file.url : '#'" target='_blank'>{{data.file.name || ''}}</a>
     </div>
-    <div class="sc-message--file-text" :style="messageColors">
-      {{data.text}}
-      <p v-if="data.meta" class="sc-message--meta" :style="messageColors">{{data.meta}}</p>
-    </div>
+    <div class="sc-message--file-text" :style="messageColors">{{data.text}}<p v-if="data.meta" class='sc-message--meta' :style="messageColors">{{data.meta}}</p></div>
   </div>
 </template>
 
@@ -25,7 +22,7 @@ export default {
       required: true
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -35,7 +32,7 @@ export default {
   font-size: 14px;
   line-height: 1.4;
   /* white-space: pre-wrap; */
-  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-font-smoothing: subpixel-antialiased
 }
 
 .sc-message--content.sent .sc-message--file {
@@ -62,7 +59,7 @@ export default {
   font-size: 14px;
   line-height: 1.4;
   white-space: pre-wrap;
-  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-font-smoothing: subpixel-antialiased
 }
 
 .sc-message--file-name {

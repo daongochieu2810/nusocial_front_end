@@ -5,8 +5,11 @@ import DashBoard from './components/Dashboard/DashBoard'
 import Community from './components/Community/Community'
 import SingleCommunity from './components/Community/SingleCommunity'
 import History from './components/History/History'
+import General from './components/Messages/General'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import Chat from './components/MessagePipeline/index'
 import wysiwyg from "vue-wysiwyg";
+import vmodal from 'vue-js-modal'
 import "vue-wysiwyg/dist/vueWysiwyg.css";
 import PerfectScrollbar from 'vue2-perfect-scrollbar'
 import 'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css'
@@ -15,6 +18,8 @@ import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import VueApollo from "vue-apollo";
 Vue.use(VueApollo);*/
+Vue.use(Chat, {})
+Vue.use(vmodal , { dialog: true })
 Vue.use(PerfectScrollbar)
 Vue.use(wysiwyg, { hideModules: {}, 
   // if the image option is not set, images are inserted as base64
@@ -36,7 +41,8 @@ const routes = [
   { path: '/dashboard', component: DashBoard },
   { path: '/community', component: Community },
   { path: '/community1', component: SingleCommunity },
-  { path: '/history', component: History }
+  { path: '/history', component: History },
+  { path: '/messages', component: General }
 ]
 const router = new VueRouter({
   routes
