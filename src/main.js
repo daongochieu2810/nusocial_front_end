@@ -5,6 +5,7 @@ import DashBoard from './components/Dashboard/DashBoard'
 import Community from './components/Community/Community'
 import SingleCommunity from './components/Community/SingleCommunity'
 import History from './components/History/History'
+import Home from './components/Home/Home'
 import General from './components/Messages/General'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import Chat from './components/MessagePipeline/index'
@@ -38,6 +39,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 const routes = [
+  { path: '/', component: Home },
   { path: '/dashboard', component: DashBoard },
   { path: '/community', component: Community },
   { path: '/community1', component: SingleCommunity },

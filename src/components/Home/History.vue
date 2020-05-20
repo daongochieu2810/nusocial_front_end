@@ -1,29 +1,25 @@
 <template>
-  <div style="margin-bottom: 20px; margin-left: 140px;">
+  <div class="history">
+    <p style="color:white;font-size: 36px;margin-left: 20px;margin-top:15px">History</p>
     <transition @before-enter="enterStart" appear>
       <div>
-        <div class="row" style="margin-top: 8vh">
-          <div class="header">Date</div>
-          <div class="header">Action Type</div>
-          <div class="header">Details</div>
-          <div class="header"></div>
+        <div class="row">
+          <div class="date" style="font-size: 25px;border-top: 1px solid white;min-width: 102px">Date</div>
+          <div class="action" style="font-size: 25px;border-top: 1px solid white;">Action Type</div>
+          <div class="details" style="font-size: 25px;border-top: 1px solid white;">Details</div>
         </div>
       </div>
     </transition>
-    <transition-group @before-enter="enterStart" appear>
+       <perfect-scrollbar>
       <div v-for="id in history.keys()" :key="id" class="row" :class="{grey : id%2==0}">
         <div class="date">17/05/2020</div>
         <div class="action">Answered message</div>
         <div class="details">
           {{history[id].text}}
         </div>
-        <b-button
-          style="border-radius: 0px;background-color: #eb3434;border: #eb3434"
-          :class="{diffRed: id%2!=0}"
-          @click="deleteItem(history[id].id)"
-        >Delete</b-button>
+      
       </div>
-    </transition-group>
+       </perfect-scrollbar>
     </div>
 </template>
 <script>
@@ -63,16 +59,21 @@ export default {
 };
 </script>
 <style scoped>
+.history {
+  margin-left: 120px;
+  margin-top: 80px;
+  background-color: black;
+  border-radius: 10px;
+  border: 2px solid #dedede;
+  width: 50%;
+}
 .row {
   background-color: black;
-  width: 91vw;
+  margin-left: 0px;
+  margin-right: 0px;
   height: auto;
-  margin-right: 3vw;
-  border-left: 2px solid white;
-  border-right: 2px solid white;
-  border-radius: 5px;
   display: grid;
-  grid-template-columns: 1fr 3fr 10fr 1fr;
+  grid-template-columns: 1fr 3fr 10fr;
 }
 .date {
   color: white;
@@ -91,14 +92,8 @@ export default {
   color: white;
   padding: 10px;
   text-align: middle;
-  border-right: 1px solid white;
 }
-.header {
-  color: white;
-  padding: 10px;
-  border-right: 1px solid white;
-  font-size: 25px;
-}
+
 .grey {
   background-color: grey;
 }
@@ -118,5 +113,9 @@ export default {
     opacity: 1;
     transform: scale(1);
   }
+}
+.ps {
+  height: 50vh;
+  width: auto;
 }
 </style>

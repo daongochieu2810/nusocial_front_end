@@ -1,8 +1,16 @@
 <template>
   <div>
+    <transition-group @before-enter="enterStart" appear>
+    <div key="stud">
     <StudentMess style="float:left" @openChat="openChat" />
+    </div>
+    <div key="admin">
     <AdminMess style="float:left" />
-    <SystemMess style="float:left" />
+    </div>
+    <div key="sys">
+    <SystemMess style="float:left"/>
+    </div>
+    </transition-group>
     <beautiful-chat
       :alwaysScrollToBottom="alwaysScrollToBottom"
       :close="closeChat"
@@ -104,6 +112,9 @@ export default {
     };
   },
   methods: {
+    enterStart: function(el) {
+      el.classList.add("testing-enter");
+    },
     sendMessage(text) {
       if (text.length > 0) {
         this.newMessagesCount = this.isChatOpen
@@ -256,5 +267,18 @@ body {
 
 .messageStyling {
   font-size: small;
+}
+.testing-enter {
+  animation: enter 0.5s;
+}
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 </style>

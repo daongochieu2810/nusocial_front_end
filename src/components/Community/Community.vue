@@ -9,7 +9,6 @@
             img-alt="Image"
             img-top
             tag="article"
-            style="max-width: 20rem;"
             class="custom-card"
           >
             <b-card-text>Best of best Best of best Best</b-card-text>
