@@ -1,20 +1,25 @@
 <template>
-  <div>
+  <div style="padding: 5px">
     <div id="row1">
       <div class="wrapper shadow" id="column11" style="width: 70vw">
         <div class="chart">
-          <h2 style="color: white">Number of teams below NUSocial</h2>
+          <h2 style="color: white">Number of active members across all communities</h2>
           <chart v-if="loaded" :chart-data="chartdata"></chart>
         </div>
       </div>
       <div class="pie-chart" id="column12">
+        <h5 style="color: white;margin-left: 20px;margin-top:10px">Distribution of types of posts</h5>
         <pie-chart></pie-chart>
       </div>
     </div>
     <div id="row2">
-      <div id="column21" class="wrapper shadow" style="margin-top: 20px;width: 60vw;margin-bottom: 10px">
+      <div
+        id="column21"
+        class="wrapper shadow"
+        style="margin-top: 20px;width: 60vw;margin-bottom: 10px"
+      >
         <div class="chart">
-          <h2 style="color: white">Another weird chart</h2>
+          <h2 style="color: white">Number of posts across all communities</h2>
           <chart v-if="loaded" :chart-data="chartdata"></chart>
         </div>
       </div>
@@ -51,7 +56,7 @@ export default {
       error: null
     };
   },
-  mounted() {}/*,
+  mounted() {} /*,
   apollo: {
       datas: {
         query: GET_DATA_SET,
@@ -78,8 +83,8 @@ export default {
   background-color: black;
 }
 .pie-chart {
-  width: 300px;
-  height: 320px;
+  width: 350px;
+  height: 410px;
   margin-left: 50px;
   margin-top: 80px;
   background-color: black;

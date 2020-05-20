@@ -10,14 +10,10 @@
       @userList="handleUserListToggle"
     >
       <template>
-        <slot name="header">
-        </slot>
+        <slot name="header"></slot>
       </template>
     </Header>
-    <UserList
-      v-if="showUserList"
-      :participants="participants"
-    />
+    <UserList v-if="showUserList" :participants="participants" />
     <MessageList
       v-if="!showUserList"
       :messages="messages"
@@ -30,40 +26,42 @@
       @remove="$emit('remove', $event)"
     >
       <template v-slot:user-avatar="scopedProps">
-        <slot name="user-avatar" :user="scopedProps.user" :message="scopedProps.message">
-        </slot>
+        <slot name="user-avatar" :user="scopedProps.user" :message="scopedProps.message"></slot>
       </template>
       <template v-slot:text-message-body="scopedProps">
-        <slot name="text-message-body" :message="scopedProps.message" :messageText="scopedProps.messageText" :messageColors="scopedProps.messageColors" :me="scopedProps.me">
-        </slot>
+        <slot
+          name="text-message-body"
+          :message="scopedProps.message"
+          :messageText="scopedProps.messageText"
+          :messageColors="scopedProps.messageColors"
+          :me="scopedProps.me"
+        ></slot>
       </template>
       <template v-slot:system-message-body="scopedProps">
-        <slot name="system-message-body" :message="scopedProps.message">
-        </slot>
+        <slot name="system-message-body" :message="scopedProps.message"></slot>
       </template>
       <template v-slot:text-message-toolbox="scopedProps">
-        <slot name="text-message-toolbox" :message="scopedProps.message" :me="scopedProps.me">
-        </slot>
+        <slot name="text-message-toolbox" :message="scopedProps.message" :me="scopedProps.me"></slot>
       </template>
     </MessageList>
     <UserInput
       v-if="!showUserList"
       :showEmoji="showEmoji"
       :onSubmit="onUserInputSubmit"
-      :suggestions="getSuggestions()"
       :showFile="showFile"
       :placeholder="placeholder"
       @onType="$emit('onType')"
       @edit="$emit('edit', $event)"
-      :colors="colors" />
+      :colors="colors"
+    />
   </div>
 </template>
 
 <script>
-import Header from './Header.vue'
-import MessageList from './MessageList.vue'
-import UserInput from './UserInput.vue'
-import UserList from './UserList.vue'
+import Header from "./Header.vue";
+import MessageList from "./MessageList.vue";
+import UserInput from "./UserInput.vue";
+import UserList from "./UserList.vue";
 
 export default {
   components: {
@@ -95,7 +93,7 @@ export default {
     },
     titleImageUrl: {
       type: String,
-      default: ''
+      default: ""
     },
     onUserInputSubmit: {
       type: Function,
@@ -115,7 +113,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: 'Write a message...'
+      default: "Write a message..."
     },
     showTypingIndicator: {
       type: String,
@@ -141,24 +139,21 @@ export default {
   data() {
     return {
       showUserList: false
-    }
+    };
   },
   computed: {
     messages() {
-      let messages = this.messageList
+      let messages = this.messageList;
 
-      return messages
+      return messages;
     }
   },
   methods: {
     handleUserListToggle(showUserList) {
-      this.showUserList = showUserList
-    },
-    getSuggestions(){
-      return this.messages.length > 0 ? this.messages[this.messages.length - 1].suggestions : []
+      this.showUserList = showUserList;
     }
   }
-}
+};
 </script>
 <style scoped>
 .sc-chat-window {
@@ -175,7 +170,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   border-radius: 10px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   animation: fadeIn;
   animation-duration: 0.3s;
   animation-timing-function: ease-in-out;

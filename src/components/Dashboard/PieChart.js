@@ -41,7 +41,7 @@ export default {
     this.renderChart( {
         hoverBackgroundColor: "red",
         hoverBorderWidth: 10,
-        labels: ["Green", "Red", "Blue"],
+        labels: ["Question", "Sharing", "Discussion"],
         datasets: [
           {
             label: "Data One",
