@@ -9,12 +9,21 @@
 <script>
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
+
 export default {
   name: "App",
   components: {
     NavBar,
     SideBar
-  }
+  },
+  data() {
+    return {
+      hotdogs: "test",
+      error: "no error"
+    };
+  },
+  apollo: {},
+  methods: {}
 };
 </script>
 

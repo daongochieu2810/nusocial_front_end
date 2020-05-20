@@ -13,11 +13,11 @@ import vmodal from 'vue-js-modal'
 import "vue-wysiwyg/dist/vueWysiwyg.css";
 import PerfectScrollbar from 'vue2-perfect-scrollbar'
 import 'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css'
-/*import ApolloClient from "apollo-client";
+import ApolloClient from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import VueApollo from "vue-apollo";
-Vue.use(VueApollo);*/
+Vue.use(VueApollo);
 Vue.use(Chat, {})
 Vue.use(vmodal , { dialog: true })
 Vue.use(PerfectScrollbar)
@@ -54,25 +54,29 @@ const router = new VueRouter({
      headers.authorization = `Bearer ${token}`;
    }
    return headers;
- };
+ };*/
  // Create an http link:
  const link = new HttpLink({
-   uri: 'https://hasura.io/learn/graphql',
-   fetch,
-   headers: getHeaders()
+   uri: 'http://localhost:5000/nusocial-7c7e8/us-central1/graphql',
+   fetch
+   //headers: getHeaders()
  });
  const client = new ApolloClient({
    link: link,
    cache: new InMemoryCache({
      addTypename: true
-   })
+   }), 
+   onError: ({ networkError, graphQLErrors }) => {
+    console.log('graphQLErrors', graphQLErrors)
+    console.log('networkError', networkError)
+  }
  });
  const apolloProvider = new VueApollo({
-  defaultClient: client,
-})*/
+  defaultClient: client
+})
 
 new Vue({
   router,
-  //apolloProvider,
+  apolloProvider,
   render: h => h(App),
 }).$mount('#app')
