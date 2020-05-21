@@ -1,17 +1,18 @@
 <template>
-  <div style="margin-bottom: 20px; margin-left: 140px;">
+  <div :class="{history: !inHistory, 'history-in':inHistory}">
+    <p v-if="!inHistory" class="heading">History</p>
     <transition @before-enter="enterStart" appear>
       <div>
-        <div class="row" style="margin-top: 8vh">
-          <div class="header" style="min-width: 101.5px">Date</div>
+        <div :class="{'row-in-history': inHistory, 'row-out': !inHistory,'top-gap': inHistory}">
+          <div class="header" style="min-width: 102px">Date</div>
           <div class="header">Action Type</div>
           <div class="header">Details</div>
-          <div class="header"></div>
+          <div v-if="inHistory" class="header"></div>
         </div>
       </div>
     </transition>
-    <transition-group @before-enter="enterStart" appear>
-      <div v-for="id in history.keys()" :key="id" class="row" :class="{grey : id%2==0}">
+    <transition-group v-if="inHistory" @before-enter="enterStart" appear>
+      <div v-for="id in history.keys()" :key="id" class="row-in-history" :class="{grey : id%2==0}">
         <div class="date">17/05/2020</div>
         <div class="action">Answered message</div>
         <div class="details">{{history[id].text}}</div>
@@ -22,6 +23,16 @@
         >Delete</b-button>
       </div>
     </transition-group>
+    <perfect-scrollbar v-else>
+      <div v-for="id in history.keys()" :key="id" class="row-out" :class="{grey : id%2==0}">
+        <div class="date">17/05/2020</div>
+        <div class="action">Answered message</div>
+        <div class="details">
+          {{history[id].text}}
+        </div>
+      
+      </div>
+       </perfect-scrollbar>
   </div>
 </template>
 <script>
@@ -30,6 +41,12 @@ export default {
     return {
       allItems: []
     };
+  },
+  props: {
+    inHistory: {
+      type: Boolean,
+      default: true
+    }
   },
   mounted() {
     for (let i = 0; i < 3; i++) {
@@ -62,7 +79,24 @@ export default {
 };
 </script>
 <style scoped>
-.row {
+.heading {
+  color:white;font-size: 36px;padding-left: 20px;margin-top:15px;border-bottom: 1px solid white;margin-bottom:0;
+}
+.top-gap {
+  margin-top: 8vh;
+}
+.history-in {
+  margin-bottom: 20px; margin-left: 140px;
+}
+.history {
+  margin-left: 120px;
+  margin-top: 80px;
+  background-color: black;
+  border-radius: 10px;
+  border: 2px solid #dedede;
+  width: 50%;
+}
+.row-in-history {
   background-color: black;
   width: 91vw;
   height: auto;
@@ -72,6 +106,14 @@ export default {
   border-radius: 5px;
   display: grid;
   grid-template-columns: 1fr 3fr 10fr 1fr;
+}
+.row-out {
+  background-color: black;
+  margin-left: 0px;
+  margin-right: 0px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 3fr 10fr;
 }
 .date {
   color: white;
@@ -117,5 +159,9 @@ export default {
     opacity: 1;
     transform: scale(1);
   }
+}
+.ps {
+  height: 50vh;
+  width: auto;
 }
 </style>

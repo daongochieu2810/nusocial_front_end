@@ -2,9 +2,10 @@
   <div>
     <transition @before-enter="enterStart" appear>
       <div id="row1">
-        <History id="column11" />
+        <History id="column11" :inHistory="false"/>
         <div id="column12">
-          <Notes style="margin-top: 80px;margin-left: 30px;border: 2px solid white" />
+          <Notes style="margin-top: 80px;margin-left: 30px;border: 2px solid white" :sizes="{maxHeight: '50vh',
+  width: 'auto'}" :inDashBoard="false"/>
         </div>
       </div>
     </transition>
@@ -17,7 +18,7 @@
 <script>
 import Notes from "../Dashboard/Notes";
 import LatestAnnouncements from "./LatestAnnouncements";
-import History from "./History";
+import History from "../History/History";
 export default {
   components: {
     Notes,

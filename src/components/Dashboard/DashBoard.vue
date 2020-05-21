@@ -18,13 +18,14 @@
         class="wrapper shadow"
         style="margin-top: 20px;width: 60vw;margin-bottom: 10px"
       >
-        <div class="chart">
+        <div class="chart" style="padding-bottom: 19px">
           <h2 style="color: white">Number of posts across all communities</h2>
           <chart v-if="loaded" :chart-data="chartdata"></chart>
         </div>
       </div>
       <div id="column22">
-        <notes style="margin-top: 20px;margin-left: 30px"></notes>
+        <notes style="margin-top: 20px;margin-left: 30px" :sizes="{maxHeight: '43vh',
+  width: 'auto'}" :inDashBoard="true"></notes>
       </div>
     </div>
   </div>
