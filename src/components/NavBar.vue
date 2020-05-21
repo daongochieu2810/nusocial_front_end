@@ -3,10 +3,26 @@
     <b-navbar-brand to="/" class="brand">NUSocial Admin</b-navbar-brand>
     <b-navbar-nav class="ml-auto">
       <b-nav-item href="#">
-        <img class="notification" src="../assets/bell-53.svg" />
+        <b-dropdown size="sm" dropleft variant="link" toggle-class="text-decoration-none" no-caret>
+          <template v-slot:button-content>
+            <img class="notification" src="../assets/bell-53.svg" />
+          </template>
+          <b-dropdown-item>
+            <router-link to="/community">Comm</router-link>
+          </b-dropdown-item>
+          <b-dropdown-item>Another action</b-dropdown-item>
+          <b-dropdown-item>Something else here...</b-dropdown-item>
+        </b-dropdown>
       </b-nav-item>
       <b-nav-item href="#">
-        <img class="user" src="../assets/face.svg" />
+        <b-dropdown size="sm" dropleft variant="link" toggle-class="text-decoration-none" no-caret>
+          <template v-slot:button-content>
+            <img class="user" src="../assets/face.svg" />
+          </template>
+          <b-dropdown-item href="#">Change username</b-dropdown-item>
+          <b-dropdown-item href="#">Change password</b-dropdown-item>
+          <b-dropdown-item href="#">Log out</b-dropdown-item>
+        </b-dropdown>
       </b-nav-item>
     </b-navbar-nav>
   </b-navbar>

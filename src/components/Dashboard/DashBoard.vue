@@ -24,7 +24,7 @@
         </div>
       </div>
       <div id="column22">
-        <notes class="notes"></notes>
+        <notes style="margin-top: 20px;margin-left: 30px"></notes>
       </div>
     </div>
   </div>
@@ -102,15 +102,5 @@ export default {
 #column22 {
   display: flex;
   flex-direction: column;
-}
-.notes {
-  margin-left: 50px;
-  width: 500px;
-  margin-top: 20px;
-  background-color: black;
-  height: auto !important;
-  padding: 15px;
-  border-radius: 10px;
-  box-sizing: content-box;
 }
 </style>

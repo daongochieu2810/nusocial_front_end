@@ -7,10 +7,10 @@
     <div class="link" :class="{ active: curr2}">
       <router-link to="/community">Community</router-link>
     </div>
-    <div class="link" :class="{ active: false }">
+    <div class="link" :class="{ active: curr3 }">
       <router-link to="/messages">Messages</router-link>
     </div>
-    <div class="link" :class="{ active: false }">
+    <div class="link" :class="{ active: curr4 }">
       <router-link to="/history">History</router-link>
     </div>
   </div>
@@ -22,23 +22,35 @@ export default {
   data() {
     return {
       curr1: false,
-      curr2: false
+      curr2: false,
+      curr3: false,
+      curr4: false
     };
   },
   mounted() {
     let currPath = this.$router.currentRoute.fullPath;
     if (currPath == "/dashboard") this.curr1 = true;
     else this.curr1 = false;
-    if (currPath == "/community" || currPath == "/community1") this.curr2 = true;
+    if (currPath == "/community" || currPath == "/community1")
+      this.curr2 = true;
     else this.curr2 = false;
+    if (currPath == "/messages") this.curr3 = true;
+    else this.curr3 = false;
+    if (currPath == "/history") this.curr4 = true;
+    else this.curr4s = false;
   },
   watch: {
     $route(to, from) {
       console.log(from.path);
       if (to.path == "/dashboard") this.curr1 = true;
       else this.curr1 = false;
-      if (to.path == "/community" || to.path == "/community1") this.curr2 = true;
+      if (to.path == "/community" || to.path == "/community1")
+        this.curr2 = true;
       else this.curr2 = false;
+      if (to.path == "/messages") this.curr3 = true;
+      else this.curr3 = false;
+      if (to.path == "/history") this.curr4 = true;
+      else this.curr4 = false;
     }
   }
 };

@@ -2,24 +2,26 @@
   <div>
     <transition @before-enter="enterStart" appear>
       <div id="row1">
-        <History id="column12" />
-        <Statistics id="column11" style="align-self: right;margin-right: 10px" />
+        <History id="column11" />
+        <div id="column12">
+          <Notes style="margin-top: 80px;margin-left: 30px;border: 2px solid white" />
+        </div>
       </div>
     </transition>
     <transition @before-enter="enterStart" appear>
-      <Announcements style="margin-right: 20px" />
+      <LatestAnnouncements style="margin-right: 20px" />
     </transition>
   </div>
 </template>
 
 <script>
-import Statistics from "../Community/Statistics";
-import Announcements from "../Community/Announcements";
+import Notes from "../Dashboard/Notes";
+import LatestAnnouncements from "./LatestAnnouncements";
 import History from "./History";
 export default {
   components: {
-    Statistics,
-    Announcements,
+    Notes,
+    LatestAnnouncements,
     History
   },
   data() {
@@ -57,5 +59,4 @@ export default {
     transform: scale(1);
   }
 }
-
 </style>
