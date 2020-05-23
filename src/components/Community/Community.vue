@@ -34,7 +34,7 @@ export default {
     }
     this.allRows.push({
       allCards: this.allCards,
-      id: 1
+      id: 0
     });
     this.allRows.push({
       allCards: this.allCards,
@@ -42,7 +42,7 @@ export default {
     });
     this.allRows.push({
       allCards: this.allCards,
-      id: 1
+      id: 2
     });
   },
   methods: {

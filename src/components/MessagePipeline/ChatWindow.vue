@@ -1,5 +1,5 @@
 <template>
-  <div class="sc-chat-window" :class="{opened: isOpen, closed: !isOpen}">
+  <div class="sc-chat-window" :class="{opened: isOpen, closed: !isOpen}" :style="{right: dist}">
     <Header
       :showCloseButton="showCloseButton"
       :title="title"
@@ -134,6 +134,10 @@ export default {
     disableUserListToggle: {
       type: Boolean,
       default: false
+    },
+    dist: {
+      type: String,
+      default: "25px"
     }
   },
   data() {
@@ -161,7 +165,6 @@ export default {
   height: calc(100% - 120px);
   max-height: 590px;
   position: fixed;
-  right: 25px;
   bottom: 100px;
   box-sizing: border-box;
   box-shadow: 0px 7px 40px 2px rgba(148, 149, 150, 0.1);

@@ -30,6 +30,7 @@
     />
 
     <ChatWindow
+      :dist="dist"
       :showLauncher="showLauncher"
       :showCloseButton="showCloseButton"
       :messageList="messageList"
@@ -89,6 +90,10 @@ export default {
     Header
   },
   props: {
+    dist: {
+      type: String,
+      default: "25px"
+    },
     icons: {
       type: Object,
       required: false,

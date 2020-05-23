@@ -9,7 +9,6 @@
 <script>
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
-
 export default {
   name: "App",
   components: {
@@ -17,13 +16,10 @@ export default {
     SideBar
   },
   data() {
-    return {
-      hotdogs: "test",
-      error: "no error"
-    };
+    return {};
   },
-  apollo: {},
-  methods: {}
+  methods: {},
+  mounted() {}
 };
 </script>
 

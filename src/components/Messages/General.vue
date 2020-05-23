@@ -1,17 +1,20 @@
 <template>
   <div>
     <transition-group @before-enter="enterStart" appear>
-    <div key="stud">
-    <StudentMess style="float:left" @openChat="openChat" />
-    </div>
-    <div key="admin">
-    <AdminMess style="float:left" />
-    </div>
-    <div key="sys">
-    <SystemMess style="float:left"/>
-    </div>
+      <div key="stud">
+        <StudentMess style="float:left" @openChat="openChat" />
+      </div>
+      <div key="admin">
+        <AdminMess style="float:left" />
+      </div>
+      <div key="sys">
+        <SystemMess style="float:left" />
+      </div>
     </transition-group>
     <beautiful-chat
+      v-for="chat in chats"
+      :key="chat.id"
+      :dist="chat.dist"
       :alwaysScrollToBottom="alwaysScrollToBottom"
       :close="closeChat"
       :colors="colors"
@@ -108,7 +111,8 @@ export default {
       chosenColor: null,
       alwaysScrollToBottom: true,
       messageStyling: true,
-      userIsTyping: false
+      userIsTyping: false,
+      allChats: []
     };
   },
   methods: {
@@ -194,10 +198,21 @@ export default {
     },
     backgroundColor() {
       return this.chosenColor === "dark" ? this.colors.messageList.bg : "#fff";
+    },
+    chats() {
+      return this.allChats;
     }
   },
   mounted() {
     this.messageList.forEach(x => (x.liked = false));
+    this.allChats.push({
+      id: 0,
+      dist: "25px"
+    });
+    this.allChats.push({
+      id: 1,
+      dist: "415px"
+    });
   }
 };
 </script>
@@ -210,44 +225,6 @@ body {
 
 * {
   font-family: Avenir Next, Helvetica Neue, Helvetica, sans-serif;
-}
-
-.demo-description {
-  max-width: 500px;
-}
-
-.demo-description img {
-  max-width: 500px;
-}
-
-.demo-test-area {
-  width: 300px;
-  box-sizing: border-box;
-}
-
-.demo-test-area--text {
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-  resize: none;
-  font-family: Avenir Next, Helvetica Neue, Helvetica, sans-serif;
-  background: #fafbfc;
-  color: #8da2b5;
-  border: 1px solid #dde5ed;
-  font-size: 16px;
-  padding: 16px 15px 14px;
-  margin: 0;
-  border-radius: 6px;
-  outline: none;
-  height: 150px;
-  margin-bottom: 10px;
-}
-
-.demo-monster-img {
-  width: 400px;
-  display: block;
-  margin: 60px auto;
 }
 
 .text-center {
