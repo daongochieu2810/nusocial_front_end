@@ -29,7 +29,7 @@
         <span class="time-right">11:02</span>
       </div>
       <div style="padding: 10px; display: flex;justify-content: center;align-items: center;">
-        <div style="cursor: pointer;" @click="openChatWindow" class="hvr-pulse">
+        <div style="cursor: pointer;" @click="openChatWindow(post.id)" class="hvr-pulse">
           <img src="./../../assets/mess.png" alt="mess" />
         </div>
       </div>
@@ -56,8 +56,8 @@ export default {
     testDate() {
       console.log(this.currDate);
     },
-    openChatWindow() {
-      this.$emit("openChat");
+    openChatWindow(id) {
+      this.$emit("openChat", id);
     }
   }
 };

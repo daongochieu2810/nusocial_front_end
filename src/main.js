@@ -71,8 +71,23 @@ const router = new VueRouter({
 
 let store = new Vuex.Store({
   state: {
+    chatbox : []
   },
   mutations: {
+    addChatbox(state,box) {
+      state.chatbox.push(box)
+    },
+    changeBox(state,id) {
+      let bx = state.chatbox.find(item => item.id === id);
+      bx.isOpen = !bx.isOpen;
+      bx.clicked = true;
+    },
+    changeBoxTrue(state,id) {
+      state.chatbox.find(item => item.id === id).isOpen = true
+    },
+    changeBoxFalse(state,id) {
+      state.chatbox.find(item => item.id === id).isOpen = false
+    }
   },
   actions: {
   },

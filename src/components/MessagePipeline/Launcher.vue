@@ -6,6 +6,7 @@
       :class="{opened: isOpen}"
       @click.prevent="isOpen ? close() : openAndFocus()"
       :style="{backgroundColor: colors.launcher.bg}"
+      style="margin-top:525px"
     >
       <Header
         v-if="!isOpen"
@@ -13,22 +14,23 @@
         :title="chatWindowTitle"
         :imageUrl="titleImageUrl"
         :colors="colors"
-        class="sc-launcher--header"
+        :onClose="close"
+        style="height: inherit;"
       ></Header>
     </div>
     <!-- <div
         v-if="newMessagesCount > 0 && !isOpen"
         class="sc-new-messsages-count"
     >{{newMessagesCount}}</div>-->
-    <img
+     <img
       v-if="showLauncher"
       :src="icons.close.img"
       :alt="icons.close.name"
+      style="z-index: 1;margin-left:333px"
       @click="closeLauncher"
       class="sc-header--close-button"
       ref="close_btn"
     />
-
     <ChatWindow
       :dist="dist"
       :showLauncher="showLauncher"
@@ -52,7 +54,7 @@
       @onType="$emit('onType')"
       @edit="$emit('edit', $event)"
       @remove="$emit('remove', $event)"
-      style="bottom: 0"
+      style="bottom: 0;z-index: 2"
     >
       <template v-slot:header>
         <slot name="header"></slot>
@@ -263,20 +265,18 @@ export default {
 </script>
 <style scoped>
 .sc-launcher {
-  width: auto;
-  height: 71px;
+  width: 370px;
+  height: 75px;
   background-position: center;
   background-repeat: no-repeat;
-  position: fixed;
-  right: 25px;
-  bottom: 0px;
+  bottom: 0;
   box-shadow: none;
   transition: box-shadow 0.2s ease-in-out;
   cursor: pointer;
   padding: 0;
-  overflow: hidden;
   border-radius: 5px;
   border: 2px solid white;
+  margin-left: 5px;
 }
 .sc-launcher .sc-open-icon,
 .sc-launcher .sc-closed-icon {
@@ -339,11 +339,10 @@ export default {
   width: 40px;
   align-self: center;
   height: 40px;
-  right: 25px;
-  bottom: 71px;
+  bottom: 74px;
   box-sizing: border-box;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-left: auto;
   position: fixed;
   background-color: red;
