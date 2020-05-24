@@ -1,6 +1,7 @@
 <template>
   <div>
     <beautiful-chat
+      :id="id"
       :dist="dist"
       :alwaysScrollToBottom="alwaysScrollToBottom"
       :close="closeChat"
@@ -55,19 +56,19 @@ import availableColors from "./colors";
 
 export default {
   props: {
-      dist: {
-          type: String,
-          default: "25px"
-      },
-      isOpen: {
-          type: Boolean
-      },
-      id: {
-          type: Number
-      },
-       clicked:{
-           type: Boolean
-       }
+    dist: {
+      type: String,
+      default: "25px"
+    },
+    isOpen: {
+      type: Boolean
+    },
+    id: {
+      type: Number
+    },
+    clicked: {
+      type: Boolean
+    }
   },
   data() {
     return {
@@ -105,7 +106,7 @@ export default {
       chosenColor: null,
       alwaysScrollToBottom: true,
       messageStyling: true,
-      userIsTyping: false,
+      userIsTyping: false
     };
   },
   methods: {
@@ -123,25 +124,25 @@ export default {
       }
     },
     handleTyping(text) {
-     this.showTypingIndicator =
+      this.showTypingIndicator =
         text.length > 0
           ? this.participants[this.participants.length - 1].id
           : "";
     },
     onMessageWasSent(message) {
-     this.messageList = [
+      this.messageList = [
         ...this.messageList,
         Object.assign({}, message, { id: Math.random() })
       ];
     },
     openChat() {
-      this.$store.commit('changeBoxTrue', this.id)
+      this.$store.commit("changeBoxTrue", this.id);
       this.newMessagesCount = 0;
       console.log("testopen");
     },
     closeChat() {
       this.clicked = true;
-      this.$store.commit('changeBoxFalse', this.id)
+      this.$store.commit("changeBoxFalse", this.id);
       console.log("testclose");
     },
     setColor(color) {
@@ -159,7 +160,7 @@ export default {
       this.messageStyling = e.target.checked;
     },
     handleOnType(id) {
-      this.$root.$emit("onType",id);
+      this.$root.$emit("onType", id);
       this.userIsTyping = true;
     },
     editMessage(message) {

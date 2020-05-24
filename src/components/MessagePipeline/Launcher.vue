@@ -22,7 +22,7 @@
         v-if="newMessagesCount > 0 && !isOpen"
         class="sc-new-messsages-count"
     >{{newMessagesCount}}</div>-->
-     <img
+    <img
       v-if="showLauncher"
       :src="icons.close.img"
       :alt="icons.close.name"
@@ -92,6 +92,9 @@ export default {
     Header
   },
   props: {
+    id: {
+      type: Number
+    },
     dist: {
       type: String,
       default: "25px"
@@ -241,6 +244,7 @@ export default {
     },
     closeLauncher() {
       this.showLauncher = false;
+      this.$store.commit("toggleClicked", this.id);
     }
   },
   computed: {

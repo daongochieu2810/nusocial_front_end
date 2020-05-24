@@ -2,10 +2,14 @@
   <div>
     <transition @before-enter="enterStart" appear>
       <div id="row1">
-        <History id="column11" :inHistory="false"/>
+        <History id="column11" :inHistory="false" />
         <div id="column12">
-          <Notes style="margin-top: 80px;margin-left: 30px;border: 2px solid white" :sizes="{maxHeight: '50vh',
-  width: 'auto'}" :inDashBoard="false"/>
+          <Notes
+            style="margin-top: 80px;margin-left: 30px;border: 2px solid white"
+            :sizes="{maxHeight: '50vh',
+  width: 'auto'}"
+            :inDashBoard="false"
+          />
         </div>
       </div>
     </transition>

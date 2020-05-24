@@ -18,7 +18,8 @@ import firebase from 'firebase'
 import Vuex from 'vuex'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
+// eslint-disable-next-line
+//import NProgress from 'nprogress'
 
 
 Vue.use(Vuex)
@@ -71,7 +72,8 @@ const router = new VueRouter({
 
 let store = new Vuex.Store({
   state: {
-    chatbox : []
+    chatbox : [],
+    isLoading: false
   },
   mutations: {
     addChatbox(state,box) {
@@ -87,6 +89,10 @@ let store = new Vuex.Store({
     },
     changeBoxFalse(state,id) {
       state.chatbox.find(item => item.id === id).isOpen = false
+    },
+    toggleClicked(state, id) {
+      let bx = state.chatbox.find(item => item.id === id);
+      bx.clicked = !bx.clicked;
     }
   },
   actions: {
@@ -94,6 +100,22 @@ let store = new Vuex.Store({
   modules: {
   }
 })
+
+/*router.beforeResolve((to, from, next) => {
+  console.log(to,from,next)
+  // If this isn't an initial page load.
+  if (to.name) {
+      // Start the route progress bar.
+      NProgress.start()
+  }
+  next()
+})
+
+router.afterEach((to, from) => {
+  console.log(to,from)
+  // Complete the animation of the route progress bar.
+  NProgress.done()
+})*/
 new Vue({
   router,
   store,

@@ -27,12 +27,9 @@
       <div v-for="id in history.keys()" :key="id" class="row-out" :class="{grey : id%2==0}">
         <div class="date">17/05/2020</div>
         <div class="action">Answered message</div>
-        <div class="details">
-          {{history[id].text}}
-        </div>
-      
+        <div class="details">{{history[id].text}}</div>
       </div>
-       </perfect-scrollbar>
+    </perfect-scrollbar>
   </div>
 </template>
 <script>
@@ -80,13 +77,19 @@ export default {
 </script>
 <style scoped>
 .heading {
-  color:white;font-size: 36px;padding-left: 20px;margin-top:15px;border-bottom: 1px solid white;margin-bottom:0;
+  color: white;
+  font-size: 36px;
+  padding-left: 20px;
+  margin-top: 15px;
+  border-bottom: 1px solid white;
+  margin-bottom: 0;
 }
 .top-gap {
-  margin-top: 8vh;
+  margin-top: 10vh;
 }
 .history-in {
-  margin-bottom: 20px; margin-left: 140px;
+  margin-bottom: 20px;
+  margin-left: 7vw;
 }
 .history {
   margin-left: 120px;

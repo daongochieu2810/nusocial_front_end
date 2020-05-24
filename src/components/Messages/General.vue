@@ -10,11 +10,16 @@
       <div key="sys">
         <SystemMess style="float:left" />
       </div>
-    </transition-group> 
+    </transition-group>
     <div class="container">
-    <div v-for="chat in getBoxes" :key="chat.id">
-    <ChatBox :isOpen="chat.isOpen" :id="chat.id" :class="{space: chat.isOpen}" :clicked="chat.clicked"/>
-    </div>
+      <div v-for="chat in getBoxes" :key="chat.id">
+        <ChatBox
+          :isOpen="chat.isOpen"
+          :id="chat.id"
+          :class="{space: chat.isOpen}"
+          :clicked="chat.clicked"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -23,7 +28,7 @@
 import StudentMess from "./StudentMess";
 import AdminMess from "./AdminMess";
 import SystemMess from "./SystemMess";
-import ChatBox from './ChatBox';
+import ChatBox from "./ChatBox";
 export default {
   name: "app",
   components: {
@@ -33,26 +38,23 @@ export default {
     ChatBox
   },
   data() {
-    return {
-      
-    }
+    return {};
   },
   methods: {
     enterStart: function(el) {
       el.classList.add("testing-enter");
     },
     openChat(id) {
-     this.$store.commit('changeBox', id)
+      this.$store.commit("changeBox", id);
     }
   },
   mounted() {
-    for(let i=0;i<7;i++) {
-      this.$store.commit('addChatbox',{
+    for (let i = 0; i < 7; i++) {
+      this.$store.commit("addChatbox", {
         id: i,
         isOpen: false,
         clicked: false
-      })
-     
+      });
     }
   },
   computed: {
@@ -60,7 +62,7 @@ export default {
       return this.$store.state.chatbox;
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -78,14 +80,14 @@ export default {
   }
 }
 .container {
-    position: fixed;
-    bottom: 0;
-    right: 0px;
-    width: auto;
-    display:flex;
-    flex-direction: row;
-    max-width: 100%;
-    padding-right: 5px;
+  position: fixed;
+  bottom: 0;
+  right: 0px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  padding-right: 5px;
 }
 .space {
   margin-left: 10px;

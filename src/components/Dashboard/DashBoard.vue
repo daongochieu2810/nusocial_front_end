@@ -24,8 +24,12 @@
         </div>
       </div>
       <div id="column22">
-        <notes style="margin-top: 20px;margin-left: 30px" :sizes="{maxHeight: '43vh',
-  width: 'auto'}" :inDashBoard="true"></notes>
+        <notes
+          style="margin-top: 20px;margin-left: 30px"
+          :sizes="{maxHeight: '43vh',
+  width: 'auto'}"
+          :inDashBoard="true"
+        ></notes>
       </div>
     </div>
   </div>
@@ -35,14 +39,6 @@
 import Chart from "./Chart.js";
 import PieChart from "./PieChart.js";
 import Notes from "./Notes";
-//import gql from 'graphql-tag';
-/*export const GET_DATA_SET = gql`
-  query getData {
-    datas(where: { is_public: { _eq: false} }, order_by: { created_at: desc }) {
-      label
-      data
-  }
- }`;*/
 export default {
   components: {
     Chart,
@@ -56,16 +52,7 @@ export default {
       datas: [],
       error: null
     };
-  },
-  mounted() {} /*,
-  apollo: {
-      datas: {
-        query: GET_DATA_SET,
-        error(error) {
-          this.error = JSON.stringify(error.message)
-        }
-      }
-  }*/
+  }
 };
 </script>
 

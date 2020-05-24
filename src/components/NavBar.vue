@@ -8,10 +8,10 @@
             <img class="notification" src="../assets/bell-53.svg" />
           </template>
           <b-dropdown-item>
-            <router-link to="/community">Comm</router-link>
+            <router-link to="/community">Some news in community</router-link>
           </b-dropdown-item>
-          <b-dropdown-item>Another action</b-dropdown-item>
-          <b-dropdown-item>Something else here...</b-dropdown-item>
+          <b-dropdown-item>Some other general news</b-dropdown-item>
+          <b-dropdown-item>Random news</b-dropdown-item>
         </b-dropdown>
       </b-nav-item>
       <b-nav-item href="#">

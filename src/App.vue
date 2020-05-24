@@ -9,6 +9,7 @@
 <script>
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
+
 export default {
   name: "App",
   components: {
@@ -18,8 +19,7 @@ export default {
   data() {
     return {};
   },
-  methods: {},
-  mounted() {}
+  methods: {}
 };
 </script>
 
