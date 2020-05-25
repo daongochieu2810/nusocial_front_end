@@ -1,16 +1,8 @@
 <template>
-  <div>
-    <div class="announcements">
-      <div class="headings">
-        <p style="font-size: 36px">Announcements</p>
-        <div id="datepicker" style="justify-self: end;padding: 10px">
-          <b-form-datepicker v-model="currDate" @hidden="testDate"></b-form-datepicker>
-        </div>
-        <div style="justify-self: end;padding: 10px">
-          <b-button variant="outline-primary">Today</b-button>
-        </div>
-      </div>
-      <div class="row" v-for="row in allRows" :key="row.id">
+ <PostRelated :datePicker="datePicker" :wordEdit="wordEdit" :announcements="true">
+   <template v-slot:title>{{title}}</template>
+   <template v-slot:content>
+    <div v-for="row in allRows" :key="row.id" class="row">
         <p class="timestamp">15/05/2020</p>
         <div class="container">
           <img
@@ -25,18 +17,30 @@
         </div>
         <p class="stats">1000/2000 read</p>
       </div>
-    </div>
-    <div class="word-editor">
-      <p style="font-size: 25px">New announcement</p>
-      <wysiwyg v-model="newAnnouncement" />
-      <b-button variant="outline-primary" style="margin-top: 10px" @click="testMake">Done</b-button>
-    </div>
-  </div>
+   </template>
+ </PostRelated>
 </template>
 
 <script>
+import PostRelated from '../Common/PostRelated'
 export default {
-  components: {},
+  components: {
+    PostRelated
+  },
+  props: {
+     datePicker: {
+          type: Boolean,
+          default: true
+      },
+      wordEdit: {
+          type: Boolean,
+          default: true
+      },
+      title: {
+          type: String,
+          default: "Announcements"
+      }
+  },
   data() {
     return {
       newAnnouncement: "",
@@ -62,17 +66,6 @@ export default {
 };
 </script>
 <style scoped>
-.announcements {
-  margin-left: 120px;
-  margin-top: 50px;
-  background-color: black;
-  border-radius: 10px;
-  border: 2px solid #dedede;
-  padding: 5px;
-  width: 93%;
-  padding-right: 20px;
-  padding-bottom: 100px;
-}
 /* Chat containers */
 .container {
   border: 2px solid #dedede;
@@ -84,10 +77,11 @@ export default {
 }
 .row {
   display: grid;
-  grid-template-columns: 1fr 10fr 3fr 2fr;
+  grid-template-columns: 1fr 10fr 3fr;
   grid-template-rows: auto auto;
   margin-left: 10px;
 }
+
 .timestamp,
 .stats {
   display: table-cell;
@@ -117,24 +111,6 @@ export default {
   color: #aaa;
 }
 
-.headings {
-  display: grid;
-  grid-template-columns: 3fr 11fr 1fr;
-  grid-template-rows: auto auto;
-  color: white;
-  padding: 10px;
-}
-.word-editor {
-  width: 70vw;
-  margin-left: 200px;
-  margin-top: -80px;
-  border-radius: 10px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  color: black;
-  border: 5px black;
-  padding: 10px;
-  margin-bottom: 10px;
-}
+
+
 </style>

@@ -54,7 +54,6 @@ export default {
 </script>
 <style scoped>
 .custom-card {
-  width: 15vw;
   height: auto;
   background-color: black;
   color: white;
@@ -71,6 +70,8 @@ export default {
   margin-top: 80px;
   margin-left: 120px;
   margin-right: 50px;
+  display: grid;
+  grid-template-columns: 5fr 5fr 5fr 5fr 5fr;
 }
 .custom-button {
   padding: 0;

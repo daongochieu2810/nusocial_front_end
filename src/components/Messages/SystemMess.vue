@@ -99,8 +99,7 @@ export default {
   border-radius: 10px;
   border: 2px solid #dedede;
   padding: 5px;
-  width: 19vw;
-  padding-right: 20px;
+  width: 21.5vw;
 }
 /* Chat containers */
 .container {
@@ -109,7 +108,7 @@ export default {
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
-  width: 18vw;
+  width: 20vw;
 }
 
 /* Clear floats */

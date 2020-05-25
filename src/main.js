@@ -21,8 +21,12 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 // eslint-disable-next-line
 //import NProgress from 'nprogress'
 
+Vue.config.productionTip = false
 
+//for common storage
 Vue.use(Vuex)
+
+//backend setup
 const firebaseConfig = {
   apiKey: "AIzaSyDyZ_QMDOFYLMHDfsm9zOszFwYf399uwdI",
   authDomain: "nusocial-7c7e8.firebaseapp.com",
@@ -35,29 +39,31 @@ const firebaseConfig = {
 };
 // Initialize Firebase   
 firebase.initializeApp(firebaseConfig); 
-
 var db = firebase.database();
-
 window.db = db;
 
-
+//messaging pipeline
 Vue.use(Chat, {})
+
+//system dialog
 Vue.use(vmodal , { dialog: true })
+
+//scrollable component
 Vue.use(PerfectScrollbar)
+
+//text editor
 Vue.use(wysiwyg, { hideModules: {}, 
   // if the image option is not set, images are inserted as base64
   image: {
     uploadURL: "/api/myEndpoint",
     dropzoneOptions: {}
   }
-  // limit content height if you wish. If not set, editor size will grow with content.
-}); // config is optional. more below
-Vue.config.productionTip = false
+}); 
+
 Vue.use(VueRouter)
-// Install BootstrapVue
 Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+
 const routes = [
   { path: '/', component: Home },
   { path: '/dashboard', component: DashBoard },
@@ -70,6 +76,7 @@ const router = new VueRouter({
   routes
 })
 
+//global storage 
 let store = new Vuex.Store({
   state: {
     chatbox : [],

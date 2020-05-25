@@ -1,6 +1,6 @@
 <template>
   <div>
-    <transition-group @before-enter="enterStart" appear>
+    <transition-group @before-enter="enterStart" appear >
       <div key="stud">
         <StudentMess style="float:left" @openChat="openChat" />
       </div>
@@ -11,6 +11,7 @@
         <SystemMess style="float:left" />
       </div>
     </transition-group>
+    <!---a fixed container to keep chatboxes at the bottom-->
     <div class="container">
       <div v-for="chat in getBoxes" :key="chat.id">
         <ChatBox
@@ -18,6 +19,7 @@
           :id="chat.id"
           :class="{space: chat.isOpen}"
           :clicked="chat.clicked"
+          style="pointer-events: auto"
         />
       </div>
     </div>
@@ -88,6 +90,7 @@ export default {
   flex-direction: row;
   max-width: 100%;
   padding-right: 5px;
+  pointer-events: none;
 }
 .space {
   margin-left: 10px;
