@@ -5,9 +5,10 @@
         <History id="column11" :inHistory="false" />
         <div id="column12">
           <Notes
-            style="margin-top: 80px;margin-left: 30px;border: 2px solid white"
+            style="margin-top: 80px;margin-left: 30px;border: 2px solid white;margin-right:10px;"
             :sizes="{maxHeight: '50vh',
   width: 'auto'}"
+            :wordEdit="false"
             :inDashBoard="false"
           />
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="posts">
+  <div class="boxes">
     <div class="headings">
       <p style="font-size: 36px">Students</p>
     </div>
@@ -109,14 +109,13 @@ export default {
   grid-template-columns: 10fr 2fr;
   padding-left: 20px;
 }
-.posts {
+.boxes {
   margin-left: 120px;
   margin-top: 80px;
   background-color: black;
   border-radius: 10px;
   border: 2px solid #dedede;
   padding: 5px;
-  width: 30%;
   padding-right: 20px;
 }
 /* Chat containers */

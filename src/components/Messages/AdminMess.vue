@@ -1,5 +1,5 @@
 <template>
-  <div class="posts">
+  <div class="boxes">
     <div class="headings">
       <p style="font-size: 36px">Admins</p>
     </div>
@@ -109,7 +109,7 @@ export default {
   grid-template-columns: 10fr 2fr;
   padding-left: 20px;
 }
-.posts {
+.boxes {
   margin-left: 20px;
   margin-top: 80px;
   background-color: grey;

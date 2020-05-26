@@ -4,7 +4,7 @@
       <div class="wrapper shadow" id="column11" style="width: 70vw">
         <div class="chart">
           <h2 style="color: white">Number of active members across all communities</h2>
-          <chart v-if="loaded" :chart-data="chartdata"></chart>
+          <LineChart v-if="loaded" :chart-data="chartdata"></LineChart>
         </div>
       </div>
       <div class="pie-chart" id="column12">
@@ -16,11 +16,11 @@
       <div
         id="column21"
         class="wrapper shadow"
-        style="margin-top: 20px;width: 60vw;margin-bottom: 10px"
+        style="margin-top: 20px;width: 60vw;margin-bottom: 10px;height: 67vh"
       >
         <div class="chart" style="padding-bottom: 19px">
           <h2 style="color: white">Number of posts across all communities</h2>
-          <chart v-if="loaded" :chart-data="chartdata"></chart>
+          <LineChart v-if="loaded" :chart-data="chartdata"></LineChart>
         </div>
       </div>
       <div id="column22">
@@ -36,12 +36,12 @@
 </template>
 
 <script>
-import Chart from "./Chart.js";
-import PieChart from "./PieChart.js";
+import LineChart from "../Common/ChartRelated/LineChart.js";
+import PieChart from "../Common/ChartRelated/PieChart.js";
 import Notes from "./Notes";
 export default {
   components: {
-    Chart,
+    LineChart,
     PieChart,
     Notes
   },

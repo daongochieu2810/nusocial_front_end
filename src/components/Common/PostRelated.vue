@@ -2,7 +2,9 @@
   <div>
     <div :class="{'extra-padding': wordEdit,'announcements': announcements, 'posts':posts}">
       <div :class="{'headings-layout': datePicker}" class="headings">
-        <p style="font-size: 36px"><slot name="title"></slot></p>
+        <p style="font-size: 3px">
+          <slot name="title"></slot>
+        </p>
         <div v-if="datePicker" id="datepicker" style="justify-self: end;padding: 10px">
           <b-form-datepicker v-model="currDate" @hidden="testDate"></b-form-datepicker>
         </div>
@@ -24,23 +26,22 @@
 <script>
 export default {
   props: {
-      datePicker: {
-          type: Boolean,
-          default: false
-      },
-      wordEdit: {
-          type: Boolean,
-          default: false
-      },
-      announcements: {
-          type: Boolean,
-          default: false
-      },
-      posts: {
-          type: Boolean,
-          default: false
-      }
-      
+    datePicker: {
+      type: Boolean,
+      default: false
+    },
+    wordEdit: {
+      type: Boolean,
+      default: false
+    },
+    announcements: {
+      type: Boolean,
+      default: false
+    },
+    posts: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -68,7 +69,7 @@ export default {
 </script>
 <style scoped>
 .extra-padding {
-    padding-bottom: 100px !important;
+  padding-bottom: 100px !important;
 }
 .announcements {
   margin-left: 120px;
@@ -146,7 +147,7 @@ export default {
   color: #aaa;
 }
 .headings {
-color: white;
+  color: white;
   padding: 10px;
 }
 .headings-layout {

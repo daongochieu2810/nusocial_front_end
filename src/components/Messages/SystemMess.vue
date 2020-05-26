@@ -1,5 +1,5 @@
 <template>
-  <div class="posts">
+  <div class="boxes">
     <div class="headings">
       <p style="font-size: 36px">System</p>
     </div>
@@ -92,7 +92,7 @@ export default {
   animation-iteration-count: infinite;
 }
 
-.posts {
+.boxes {
   margin-left: 20px;
   margin-top: 80px;
   background-color: black;
