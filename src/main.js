@@ -6,6 +6,8 @@ import Community from './components/Community/Community'
 import SingleCommunity from './components/Community/SingleCommunity'
 import History from './components/History/History'
 import Home from './components/Home/Home'
+import Login from './components/Auth/Login'
+import Register from './components/Auth/Register'
 import General from './components/Messages/General'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import Chat from './components/MessagePipeline/index'
@@ -19,7 +21,7 @@ import Vuex from 'vuex'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 // eslint-disable-next-line
-//import NProgress from 'nprogress'
+import NProgress from 'nprogress'
 
 Vue.config.productionTip = false
 
@@ -65,7 +67,9 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 const routes = [
-  { path: '/', component: Home },
+  { path: '/login', component: Login },
+  { path: '/register', component: Register },
+  { path: '/', name: 'Home',component: Home },
   { path: '/dashboard', component: DashBoard },
   { path: '/community', component: Community },
   { path: '/community1', component: SingleCommunity },
@@ -73,6 +77,8 @@ const routes = [
   { path: '/messages', component: General }
 ]
 const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes
 })
 
@@ -80,7 +86,16 @@ const router = new VueRouter({
 let store = new Vuex.Store({
   state: {
     chatbox : [],
-    isLoading: false
+    isLoading: false,
+    user: {
+      loggedIn: false,
+      data: null
+    }
+  },
+  getters: {
+    user(state) {
+      return state.user
+    } 
   },
   mutations: {
     addChatbox(state,box) {
@@ -100,15 +115,33 @@ let store = new Vuex.Store({
     toggleClicked(state, id) {
       let bx = state.chatbox.find(item => item.id === id);
       bx.clicked = !bx.clicked;
+    }, SET_LOGGED_IN(state, value) {
+      state.user.loggedIn = value;
+    },
+    SET_USER(state, data) {
+      state.user.data = data;
     }
   },
   actions: {
+  fetchUser({ commit }, user) {
+      commit("SET_LOGGED_IN", user !== null);
+      if (user) {
+        commit("SET_USER", {
+          displayName: user.displayName,
+          email: user.email
+        });
+      } else {
+        commit("SET_USER", null);
+      }
+    }
   },
   modules: {
   }
 })
 
-/*router.beforeResolve((to, from, next) => {
+
+//loading indicator
+router.beforeResolve((to, from, next) => {
   console.log(to,from,next)
   // If this isn't an initial page load.
   if (to.name) {
@@ -122,7 +155,9 @@ router.afterEach((to, from) => {
   console.log(to,from)
   // Complete the animation of the route progress bar.
   NProgress.done()
-})*/
+})
+
+
 new Vue({
   router,
   store,

@@ -21,16 +21,26 @@
           </template>
           <b-dropdown-item href="#">Change username</b-dropdown-item>
           <b-dropdown-item href="#">Change password</b-dropdown-item>
-          <b-dropdown-item href="#">Log out</b-dropdown-item>
+          <b-dropdown-item @click="signOut">Log out</b-dropdown-item>
         </b-dropdown>
       </b-nav-item>
     </b-navbar-nav>
   </b-navbar>
 </template>
 <script>
+import firebase from 'firebase'
 export default {
   name: "NavBar",
-  methods: {}
+  methods: {
+    signOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.push('/login')
+        });
+    }
+  }
 };
 </script>
 <style scoped>

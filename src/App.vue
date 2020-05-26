@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div v-if="$router.currentRoute.fullPath != '/register' && $router.currentRoute.fullPath != '/login'">
     <SideBar />
     <NavBar />
     <Drawer />
@@ -14,6 +15,7 @@
           style="pointer-events: auto"
         />
       </div>
+    </div>
     </div>
     <router-view class="main-view"></router-view>
   </div>
@@ -33,7 +35,9 @@ export default {
     Drawer
   },
   data() {
-    return {};
+    return {
+    
+    };
   },
   methods: {},
   mounted() {

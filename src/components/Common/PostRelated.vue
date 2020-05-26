@@ -2,7 +2,7 @@
   <div>
     <div :class="{'extra-padding': wordEdit,'announcements': announcements, 'posts':posts}">
       <div :class="{'headings-layout': datePicker}" class="headings">
-        <p style="font-size: 3px">
+        <p style="font-size: 30px">
           <slot name="title"></slot>
         </p>
         <div v-if="datePicker" id="datepicker" style="justify-self: end;padding: 10px">

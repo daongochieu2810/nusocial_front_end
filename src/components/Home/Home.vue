@@ -15,7 +15,7 @@
       </div>
     </transition>
     <transition @before-enter="enterStart" appear>
-      <LatestAnnouncements style="margin-right: 20px" />
+      <LatestAnnouncements />
     </transition>
   </div>
 </template>

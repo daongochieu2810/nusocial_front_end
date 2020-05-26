@@ -16,7 +16,7 @@
       <div
         id="column21"
         class="wrapper shadow"
-        style="margin-top: 20px;width: 60vw;margin-bottom: 10px;height: 67vh"
+        style="margin-top: 20px;width: 60vw;margin-bottom: 10px;height: 455px"
       >
         <div class="chart" style="padding-bottom: 19px">
           <h2 style="color: white">Number of posts across all communities</h2>

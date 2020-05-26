@@ -1,0 +1,78 @@
+<template>
+  <AuthTemplate >
+      <template v-slot:heading>
+          <h2>NUSocial<br>Login Page</h2>
+            <p>Login from here to access.</p>
+      </template>
+      <template v-slot:form>
+            <div class="login-form">
+               <form @submit.prevent="submit">
+                  <div class="form-group">
+                     <label>Email</label>
+                     <input type="text" class="form-control" placeholder="Email" v-model="form.email">
+                  </div>
+                  <div class="form-group">
+                     <label>Password</label>
+                     <input type="password" class="form-control" placeholder="Password" v-model="form.password">
+                  </div>
+                  <p><b-button size="lg" variant="primary">Register with NUSNET</b-button></p>
+                  <button type="submit" class="btn btn-black">Login</button>
+                  <router-link to="/register">Register</router-link>
+               </form>
+            </div>
+      </template>
+  </AuthTemplate>
+</template>
+
+<script>
+import firebase from "firebase";
+import AuthTemplate from './AuthTemplate';
+export default {
+    components: {
+        AuthTemplate
+    },
+  data() {
+    return {
+      form: {
+        email: "",
+        password: ""
+      },
+      error: null
+    };
+  },
+  methods: {
+    submit() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.form.email, this.form.password)
+        .then(data => {
+        console.log(data)
+          this.$router.push('/');
+        })
+        .catch(err => {
+          this.error = err.message;
+        });
+    }
+  }
+};
+</script>
+<style scoped>
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}
+@media screen and (min-width: 768px){
+    .login-form{
+        margin-top: 50%;
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+}
+</style>

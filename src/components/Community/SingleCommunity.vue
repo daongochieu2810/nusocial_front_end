@@ -3,7 +3,7 @@
     <transition @before-enter="enterStart" appear>
       <div id="row1">
         <Posts id="column12" />
-        <Statistics id="column11" style="align-self: right;margin-right: 10px;height: 68vh" />
+        <Statistics id="column11" style="align-self: right;margin-right: 10px;height: 500px" />
       </div>
     </transition>
     <transition @before-enter="enterStart" appear>

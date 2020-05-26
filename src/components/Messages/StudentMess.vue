@@ -26,7 +26,7 @@
           the years, sometimes by accident, sometimes
           on purpose (injected humour and the like).
         </p>
-        <span class="time-right">11:02</span>
+        <span class="time-right">02:02</span>
       </div>
       <div style="padding: 10px; display: flex;justify-content: center;align-items: center;">
         <div style="cursor: pointer;" @click="openChatWindow(post.id)" class="hvr-pulse">

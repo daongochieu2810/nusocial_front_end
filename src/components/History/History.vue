@@ -78,8 +78,9 @@ export default {
 <style scoped>
 .heading {
   color: white;
-  font-size: 36px;
+  font-size: 30px;
   padding-left: 20px;
+  padding-bottom: 10px;
   margin-top: 15px;
   border-bottom: 1px solid white;
   margin-bottom: 0;

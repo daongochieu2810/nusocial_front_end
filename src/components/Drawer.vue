@@ -5,16 +5,34 @@
     </b-button>
     <b-sidebar id="sidebar-1" title="Friends" shadow>
       <div class="px-3 py-2">
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-          in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        </p>
+      <div v-for="friend in allFriends" :key="friend.id" class="container" @click="openChat(friend.id)">
+         <img
+            src="https://scontent-xsp1-1.xx.fbcdn.net/v/t1.0-9/s960x960/78794853_2434835663499592_1312362149607112704_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=_4aBd_hMTBQAX_CGjB5&_nc_ht=scontent-xsp1-1.xx&_nc_tp=7&oh=a9e3f52490af5dfc6067038edb8de083&oe=5EE4C764"
+            alt="Avatar"
+          />
+          <p>Dao Ngoc Hieu</p>
+      </div>
       </div>
     </b-sidebar>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      allFriends:[]
+    }
+  },
+  mounted() {
+    this.allFriends = this.$store.state.chatbox;
+    this.allFriends.push(...this.allFriends)
+  },
+  methods: {
+    openChat(id) {
+      this.$store.commit("changeBox", id);
+    }
+  }
+};
 </script>
 <style scoped>
 .drawer {
@@ -24,4 +42,53 @@ export default {};
   left: 0;
   overflow-x: hidden; /* Disable horizontal scroll */
 }
+/* Chat containers */
+.container {
+  border: 2px solid #dedede;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  margin-left: 5px;
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Style images */
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+/* Style the right image */
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+}
+
 </style>
