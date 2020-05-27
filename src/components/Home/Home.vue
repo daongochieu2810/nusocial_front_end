@@ -5,7 +5,7 @@
         <History id="column11" :inHistory="false" />
         <div id="column12">
           <Notes
-            style="margin-top: 80px;margin-left: 30px;border: 2px solid white;margin-right:10px;"
+            style="margin-top: 80px;margin-left: 30px;border: 2px solid white;margin-right: 10px;"
             :sizes="{maxHeight: '50vh',
   width: 'auto'}"
             :wordEdit="false"
@@ -37,6 +37,10 @@ export default {
     enterStart: function(el) {
       el.classList.add("testing-enter");
     }
+  },
+  mounted() {
+    console.log(this.$store.state.user);
+    console.log(this.$router);
   }
 };
 </script>

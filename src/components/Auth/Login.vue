@@ -1,36 +1,46 @@
 <template>
-  <AuthTemplate >
-      <template v-slot:heading>
-          <h2>NUSocial<br>Login Page</h2>
-            <p>Login from here to access.</p>
-      </template>
-      <template v-slot:form>
-            <div class="login-form">
-               <form @submit.prevent="submit">
-                  <div class="form-group">
-                     <label>Email</label>
-                     <input type="text" class="form-control" placeholder="Email" v-model="form.email">
-                  </div>
-                  <div class="form-group">
-                     <label>Password</label>
-                     <input type="password" class="form-control" placeholder="Password" v-model="form.password">
-                  </div>
-                  <p><b-button size="lg" variant="primary">Register with NUSNET</b-button></p>
-                  <button type="submit" class="btn btn-black">Login</button>
-                  <router-link to="/register">Register</router-link>
-               </form>
-            </div>
-      </template>
+  <AuthTemplate>
+    <template v-slot:heading>
+      <h2>
+        NUSocial Admin
+        <br />Login Page
+      </h2>
+      <p>Login from here to access.</p>
+    </template>
+    <template v-slot:form>
+      <div class="login-form">
+        <form action="#" @submit.prevent="submit">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" placeholder="Email" v-model="form.email" />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              v-model="form.password"
+            />
+          </div>
+          <p>
+            <b-button size="lg" variant="primary">Register with NUSNET</b-button>
+          </p>
+          <button type="submit" class="btn btn-dark" style="margin-right:20px">Login</button>
+          <router-link to="/register">Register</router-link>
+        </form>
+      </div>
+    </template>
   </AuthTemplate>
 </template>
 
 <script>
-import firebase from "firebase";
-import AuthTemplate from './AuthTemplate';
+const fb = require("../../backend.js");
+import AuthTemplate from "./AuthTemplate";
 export default {
-    components: {
-        AuthTemplate
-    },
+  components: {
+    AuthTemplate
+  },
   data() {
     return {
       form: {
@@ -42,15 +52,18 @@ export default {
   },
   methods: {
     submit() {
-      firebase
-        .auth()
+      this.$store.commit("toggleLoading");
+      fb.auth
         .signInWithEmailAndPassword(this.form.email, this.form.password)
-        .then(data => {
-        console.log(data)
-          this.$router.push('/');
+        .then(user => {
+          this.$store.commit("setCurrentUser", user.user);
+          this.$store.dispatch("fetchUserProfile");
+          this.$router.push("/");
+          this.$store.commit("toggleLoading");
         })
         .catch(err => {
-          this.error = err.message;
+          console.log(err);
+          this.$store.commit("toggleLoading");
         });
     }
   }
@@ -58,21 +71,21 @@ export default {
 </script>
 <style scoped>
 @media screen and (max-width: 450px) {
-    .login-form{
-        margin-top: 10%;
-    }
+  .login-form {
+    margin-top: 10%;
+  }
 
-    .register-form{
-        margin-top: 10%;
-    }
+  .register-form {
+    margin-top: 10%;
+  }
 }
-@media screen and (min-width: 768px){
-    .login-form{
-        margin-top: 50%;
-    }
+@media screen and (min-width: 768px) {
+  .login-form {
+    margin-top: 50%;
+  }
 
-    .register-form{
-        margin-top: 20%;
-    }
+  .register-form {
+    margin-top: 20%;
+  }
 }
 </style>

@@ -78,7 +78,7 @@ export default {
   border-radius: 10px;
   border: 2px solid #dedede;
   padding: 5px;
-  width: 93%;
+  width: 90.6vw;
   padding-right: 20px;
 }
 .posts {

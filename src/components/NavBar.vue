@@ -28,17 +28,21 @@
   </b-navbar>
 </template>
 <script>
-import firebase from 'firebase'
+const fb = require("../backend.js");
 export default {
   name: "NavBar",
   methods: {
     signOut() {
-      firebase
-        .auth()
+      fb.auth
         .signOut()
         .then(() => {
-          this.$router.push('/login')
+          this.$store.dispatch("clearData");
+          this.$router.push("/login");
+        })
+        .catch(err => {
+          console.log(err);
         });
+      sessionStorage.clear();
     }
   }
 };

@@ -1,42 +1,51 @@
 <template>
-<AuthTemplate>
+  <AuthTemplate>
     <template v-slot:heading>
-         <h2>NUSocial<br> Register Page</h2>
-            <p>Register from here to access.</p>
+      <h2>
+        NUSocial Admin
+        <br />Register Page
+      </h2>
+      <p>Register from here to access.</p>
     </template>
     <template v-slot:form>
-         <div class="login-form">
-               <form @submit.prevent="submit">
-                    <div class="form-group">
-                     <label>User Name</label>
-                     <input type="text" class="form-control" placeholder="User Name" v-model="form.name">
-                  </div>
-                  <div class="form-group">
-                     <label>Email</label>
-                     <input type="text" class="form-control" placeholder="Email" v-model="form.email">
-                  </div>
-                  <div class="form-group">
-                     <label>Password</label>
-                     <input type="password" class="form-control" placeholder="Password" v-model="form.password">
-                  </div>
-                  <p><b-button size="lg" variant="primary">Register with NUSNET</b-button></p>
-                  <button type="submit" class="btn btn-secondary">Register</button>
-                  <router-link to="/login" style="margin-left: 20px;">Already one of us ? Login !</router-link>
-               </form>
-            </div>
+      <div class="login-form">
+        <form action="#" @submit.prevent="submit">
+          <div class="form-group">
+            <label>User Name</label>
+            <input type="text" class="form-control" placeholder="User Name" v-model="form.name" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" placeholder="Email" v-model="form.email" />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              v-model="form.password"
+            />
+          </div>
+          <p>
+            <b-button size="lg" variant="primary">Register with NUSNET</b-button>
+          </p>
+          <button type="submit" class="btn btn-secondary">Register</button>
+          <router-link to="/login" style="margin-left: 20px;">Already one of us ? Login !</router-link>
+        </form>
+      </div>
     </template>
-</AuthTemplate>
-
+  </AuthTemplate>
 </template>
 
 
 <script>
-import firebase from "firebase";
-import AuthTemplate from './AuthTemplate'
+const fb = require("../../backend.js");
+import AuthTemplate from "./AuthTemplate";
 export default {
-    components: {
-        AuthTemplate
-    },
+  components: {
+    AuthTemplate
+  },
   data() {
     return {
       form: {
@@ -47,26 +56,33 @@ export default {
       error: null
     };
   },
-  mounted() {
-      
-  },
   methods: {
     submit() {
-      firebase
-        .auth()
+      this.$store.commit("toggleLoading");
+      fb.auth
         .createUserWithEmailAndPassword(this.form.email, this.form.password)
-        .then(data => {
-          data.user
-            .updateProfile({
-              displayName: this.form.name
+        .then(user => {
+          this.$store.commit("setCurrentUser", user.user);
+
+          // create user obj
+          fb.usersCollection
+            .doc(user.user.uid)
+            .set({
+              name: this.form.name
             })
-            .then(() => {});
-              this.$router.push('/');
-            console.log('name '+this.form.name)
+            .then(() => {
+              this.$store.dispatch("fetchUserProfile");
+              this.$router.push("/");
+              this.$store.commit("toggleLoading");
+            })
+            .catch(err => {
+              console.log(err);
+              this.$store.commit("toggleLoading");
+            });
         })
         .catch(err => {
-          this.error = err.message;
-          console.log('error '+this.error)
+          console.log(err);
+          this.$store.commit("toggleLoading");
         });
     }
   }
@@ -74,28 +90,28 @@ export default {
 </script>
 <style scoped>
 @media screen and (max-width: 450px) {
-    .login-form{
-        margin-top: 10%;
-    }
+  .login-form {
+    margin-top: 10%;
+  }
 
-    .register-form{
-        margin-top: 10%;
-    }
+  .register-form {
+    margin-top: 10%;
+  }
 }
 
-@media screen and (min-width: 768px){
-    .login-form{
-        margin-top: 50%;
-    }
+@media screen and (min-width: 768px) {
+  .login-form {
+    margin-top: 50%;
+  }
 
-    .register-form{
-        margin-top: 20%;
-    }
+  .register-form {
+    margin-top: 20%;
+  }
 }
 
-.btn-black{
-    background-color: #000 !important;
-    color: #fff;
-    margin-right: 20px;
+.btn-black {
+  background-color: #000 !important;
+  color: #fff;
+  margin-right: 20px;
 }
 </style>

@@ -5,13 +5,18 @@
     </b-button>
     <b-sidebar id="sidebar-1" title="Friends" shadow>
       <div class="px-3 py-2">
-      <div v-for="friend in allFriends" :key="friend.id" class="container" @click="openChat(friend.id)">
-         <img
+        <div
+          v-for="friend in allFriends"
+          :key="friend.id"
+          class="container"
+          @click="openChat(friend.id)"
+        >
+          <img
             src="https://scontent-xsp1-1.xx.fbcdn.net/v/t1.0-9/s960x960/78794853_2434835663499592_1312362149607112704_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=_4aBd_hMTBQAX_CGjB5&_nc_ht=scontent-xsp1-1.xx&_nc_tp=7&oh=a9e3f52490af5dfc6067038edb8de083&oe=5EE4C764"
             alt="Avatar"
           />
           <p>Dao Ngoc Hieu</p>
-      </div>
+        </div>
       </div>
     </b-sidebar>
   </div>
@@ -20,12 +25,12 @@
 export default {
   data() {
     return {
-      allFriends:[]
-    }
+      allFriends: []
+    };
   },
   mounted() {
     this.allFriends = this.$store.state.chatbox;
-    this.allFriends.push(...this.allFriends)
+    //this.allFriends.push(...this.allFriends)
   },
   methods: {
     openChat(id) {
@@ -90,5 +95,4 @@ export default {
   float: left;
   color: #999;
 }
-
 </style>
