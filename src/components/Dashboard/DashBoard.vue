@@ -9,7 +9,7 @@
       </div>
       <div class="pie-chart" id="column12">
         <h5 style="color: white;margin-left: 20px;margin-top:10px">Distribution of types of posts</h5>
-        <pie-chart></pie-chart>
+        <pie-chart style="margin-left: 1%;"></pie-chart>
       </div>
     </div>
     <div id="row2">
@@ -71,9 +71,9 @@ export default {
   background-color: black;
 }
 .pie-chart {
-  width: 350px;
-  height: 410px;
-  margin-left: 50px;
+  width: 21vw;
+  height: 48.5vh;
+  margin-left: 30px;
   margin-top: 80px;
   background-color: black;
   border-radius: 10px;
