@@ -19,8 +19,8 @@
           <template v-slot:button-content>
             <img class="user" src="../assets/face.svg" />
           </template>
-          <b-dropdown-item href="#">Change username</b-dropdown-item>
-          <b-dropdown-item href="#">Change password</b-dropdown-item>
+          <b-dropdown-item @click="() => {$router.push('/editusername')}">Change username</b-dropdown-item>
+          <b-dropdown-item @click="() => {$router.push('/editpassword')}">Change password</b-dropdown-item>
           <b-dropdown-item @click="signOut">Log out</b-dropdown-item>
         </b-dropdown>
       </b-nav-item>

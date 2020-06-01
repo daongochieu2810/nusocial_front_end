@@ -24,7 +24,7 @@
             />
           </div>
           <p>
-            <b-button size="lg" variant="primary">Register with NUSNET</b-button>
+            <b-button size="lg" variant="primary">Log in with NUSNET</b-button>
           </p>
           <button type="submit" class="btn btn-dark" style="margin-right:20px">Login</button>
           <router-link to="/register">Register</router-link>
@@ -74,18 +74,10 @@ export default {
   .login-form {
     margin-top: 10%;
   }
-
-  .register-form {
-    margin-top: 10%;
-  }
 }
 @media screen and (min-width: 768px) {
   .login-form {
     margin-top: 50%;
-  }
-
-  .register-form {
-    margin-top: 20%;
   }
 }
 </style>

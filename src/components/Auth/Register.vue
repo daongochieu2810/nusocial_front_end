@@ -8,7 +8,7 @@
       <p>Register from here to access.</p>
     </template>
     <template v-slot:form>
-      <div class="login-form">
+      <div class="register-form">
         <form action="#" @submit.prevent="submit">
           <div class="form-group">
             <label>User Name</label>
@@ -90,22 +90,14 @@ export default {
 </script>
 <style scoped>
 @media screen and (max-width: 450px) {
-  .login-form {
-    margin-top: 10%;
-  }
-
   .register-form {
     margin-top: 10%;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .login-form {
-    margin-top: 50%;
-  }
-
   .register-form {
-    margin-top: 20%;
+    margin-top: 50%;
   }
 }
 

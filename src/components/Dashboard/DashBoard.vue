@@ -71,8 +71,8 @@ export default {
   background-color: black;
 }
 .pie-chart {
-  width: 21vw;
-  height: 48.5vh;
+  width: 23vw;
+  height: 55vh;
   margin-left: 30px;
   margin-top: 80px;
   background-color: black;

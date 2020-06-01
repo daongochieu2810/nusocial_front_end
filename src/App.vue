@@ -1,29 +1,33 @@
 <template>
   <div>
-    <div
-      v-if="$router.currentRoute.fullPath != '/register' && $router.currentRoute.fullPath != '/login'"
-    >
-      <SideBar />
-      <NavBar />
-      <Drawer />
-      <!---a fixed container to keep chatboxes at the bottom-->
-      <div class="container">
-        <ChatBox
-          v-for="chat in getBoxes"
-          :key="chat.id"
-          :isOpen="chat.isOpen"
-          :id="chat.id"
-          :class="{space: chat.isOpen}"
-          :clicked="chat.clicked"
-          style="pointer-events: auto"
-        />
+    <div :class="{blur : $store.state.isLoading}">
+      <div
+        v-if="$router.currentRoute.fullPath != '/register' && $router.currentRoute.fullPath != '/login' && $router.currentRoute.fullPath != '/editusername' && $router.currentRoute.fullPath != '/editpassword'"
+      >
+        <SideBar />
+        <NavBar />
+        <Drawer />
+        <!---a fixed container to keep chatboxes at the bottom-->
+        <div class="container">
+          <ChatBox
+            v-for="chat in getBoxes"
+            :key="chat.id"
+            :isOpen="chat.isOpen"
+            :id="chat.id"
+            :class="{space: chat.isOpen}"
+            :clicked="chat.clicked"
+            style="pointer-events: auto"
+          />
+        </div>
       </div>
+      <router-view class="main-view"></router-view>
     </div>
-    <router-view class="main-view"></router-view>
+    <Loading v-if="$store.state.isLoading" style="position: fixed;bottom: 50vh;right: 50vw;" />
   </div>
 </template>
 
 <script>
+import Loading from "./components/Common/Loading";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
 import ChatBox from "./components/Messages/ChatBox";
@@ -34,7 +38,8 @@ export default {
     NavBar,
     SideBar,
     ChatBox,
-    Drawer
+    Drawer,
+    Loading
   },
   data() {
     return {};
@@ -82,5 +87,9 @@ body {
 }
 .space {
   margin-left: 10px;
+}
+.blur {
+  filter: blur(2px);
+  pointer-events: none;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :class="{blur : $store.state.isLoading}">
+    <div>
       <div class="sidenav">
         <div class="login-main-text fadeInLeft">
           <slot name="heading"></slot>
@@ -12,24 +12,14 @@
         </div>
       </div>
     </div>
-    <Loading v-if="$store.state.isLoading" style="position: fixed;bottom: 50vh;right: 50vw;" />
   </div>
 </template>
 
 
 <script>
-import Loading from "../Common/Loading";
-export default {
-  components: {
-    Loading
-  }
-};
+export default {};
 </script>
 <style scoped>
-.blur {
-  filter: blur(2px);
-  pointer-events: none;
-}
 .sidenav {
   height: 100vh;
   background-color: #000;
