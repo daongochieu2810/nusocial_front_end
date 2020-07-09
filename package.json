@@ -1,0 +1,79 @@
+{
+  "name": "nusocial",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "autolinker": "^3.14.1",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.13.1",
+    "chart.js": "^2.9.3",
+    "core-js": "^3.6.4",
+    "css-loader": "^2.1.1",
+    "emoji-js": "^3.5.0",
+    "escape-goat": "^3.0.0",
+    "firebase": "^7.14.5",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
+    "imagemin": "^7.0.1",
+    "jquery": "^3.5.1",
+    "moment": "^2.27.0",
+    "msgdown": "^1.0.2",
+    "node-sass": "^4.14.1",
+    "popper.js": "^1.16.1",
+    "portal-vue": "^2.1.7",
+    "sass-loader": "^8.0.2",
+    "toast": "^0.2.6",
+    "v-tooltip": "^2.0.3",
+    "vue": "^2.6.11",
+    "vue-chartjs": "^3.5.0",
+    "vue-js-modal": "^2.0.0-rc.3",
+    "vue-quill-editor": "^3.0.6",
+    "vue-router": "^3.1.6",
+    "vue2-perfect-scrollbar": "^1.5.0",
+    "vuex": "^3.4.0",
+    "vuex-persistedstate": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11",
+    "file-loader": "^1.1.11",
+    "img-loader": "^3.0.1",
+    "vue-hot-reload-api": "^2.3.3",
+    "vue-loader": "^14.2.4",
+    "vue-style-loader": "^4.0.2",
+    "vue-svg-loader": "^0.5.0",
+    "serialize-javascript": "^2.1.1",
+    "standard": "^11.0.0",
+    "url-loader": "^1.1.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
