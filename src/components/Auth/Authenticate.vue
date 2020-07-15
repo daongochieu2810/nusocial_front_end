@@ -21,6 +21,7 @@ request.post(
         if (!error) {
             console.log(response);
             console.log(body);
+            console.log(error);
         }
     }
 );
