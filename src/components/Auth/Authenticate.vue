@@ -7,7 +7,7 @@ const params = window.location.search;
 
 const code = new URLSearchParams(params).get("code");
 
-const url = "http://nusocial-bridge-api.herokuapp.com/auth?code=" + code;
+const url = "https://nusocial-bridge-api.herokuapp.com/auth?code=" + code;
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 var request = require("request");
 request.post(
