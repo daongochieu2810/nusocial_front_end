@@ -16,6 +16,9 @@ request.post(
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
         },
+        rejectUnauthorized: false,
+        requestCert: false,
+        agent: false,
     },
     function(error, response, body) {
         if (!error) {
