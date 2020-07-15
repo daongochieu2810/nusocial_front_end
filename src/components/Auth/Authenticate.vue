@@ -1,5 +1,5 @@
 <template>
-  <p>Hi, authenticating</p>
+    <p>Hi, authenticating</p>
 </template>
 
 <script>
@@ -7,18 +7,23 @@ const params = window.location.search;
 
 const code = new URLSearchParams(params).get("code");
 
-console.log(code);
+const url = "http://nusocial-bridge-api.herokuapp.com/auth?code=" + code;
+
+var request = require("request");
+request.post(
+    {
+        url: url,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+    },
+    function(error, response, body) {
+        if (!error) {
+            console.log(response);
+            console.log(body);
+        }
+    }
+);
 </script>
 
-<style scoped>
-@media screen and (max-width: 450px) {
-  .login-form {
-    margin-top: 10%;
-  }
-}
-@media screen and (min-width: 768px) {
-  .login-form {
-    margin-top: 50%;
-  }
-}
-</style>
+<style scoped></style>
