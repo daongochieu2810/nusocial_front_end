@@ -83,16 +83,10 @@ export default {
                                                             vuex.$router.push(
                                                                 "/"
                                                             );
-                                                            vuex.$store.commit(
-                                                                "toggleLoading"
-                                                            );
                                                         });
                                                 })
                                                 .catch((err) => {
                                                     console.log(err);
-                                                    vuex.$store.commit(
-                                                        "toggleLoading"
-                                                    );
                                                 });
                                         }
                                     }
