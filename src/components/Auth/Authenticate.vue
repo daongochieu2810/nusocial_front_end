@@ -5,8 +5,9 @@
 <script>
 const params = window.location.search;
 const fb = require("../../backend.js");
+var vuex = this;
 const code = new URLSearchParams(params).get("code");
-
+this.$store.commit("toggleLoading");
 const url = "https://nusocial-bridge-api.herokuapp.com/auth?code=" + code;
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 var request = require("request");
@@ -63,19 +64,15 @@ request.post(
                                         .signInWithCustomToken(firebaseToken)
                                         .then((user) => {
                                             console.log(user.user);
-                                            this.$store.commit(
+                                            vuex.$store.commit(
                                                 "setCurrentUser",
                                                 user.user
                                             );
-                                            this.$store
+                                            vuex.$store
                                                 .dispatch("fetchUserProfile")
                                                 .then(() => {
-                                                    this.$router.push(
-                                                        "/dashboard"
-                                                    );
-                                                    this.$store.commit(
-                                                        "toggleLoading"
-                                                    );
+                                                    vuex.$router.push("/");
+                                                    console.log(vuex.$router);
                                                 });
                                         })
                                         .catch((err) => {
