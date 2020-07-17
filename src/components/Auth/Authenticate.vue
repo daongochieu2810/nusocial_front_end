@@ -1,5 +1,5 @@
 <template>
-    <p>Hi, authenticating</p>
+  <p>Hi, authenticating</p>
 </template>
 
 <script>
@@ -11,22 +11,39 @@ const url = "https://nusocial-bridge-api.herokuapp.com/auth?code=" + code;
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 var request = require("request");
 request.post(
-    {
-        url: url,
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        rejectUnauthorized: false,
-        requestCert: false,
-        agent: false,
+  {
+    url: url,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
     },
-    function(error, response, body) {
-        if (!error) {
-            console.log(response);
+    rejectUnauthorized: false,
+    requestCert: false,
+    agent: false
+  },
+  function(error, response, body) {
+    if (!error) {
+      var accessToken = JSON.parse(body)["access_token"];
+      console.log(accessToken);
+      request.post(
+        {
+          url:
+            "http://nusocial-bridge-api.herokuapp.com/profile?token=" +
+            accessToken,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          rejectUnauthorized: false,
+          requestCert: false,
+          agent: false
+        },
+        function(error, response, body) {
+          if (!error) {
             console.log(body);
-            console.log(error);
+          }
         }
+      );
     }
+  }
 );
 </script>
 
