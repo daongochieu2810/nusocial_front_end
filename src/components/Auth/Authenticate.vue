@@ -59,7 +59,7 @@ request.post(
                                     response;
                                     request;
                                     const firebaseToken = body;
-                                    console.log(firebaseToken);
+                                    console.log("Abc" + firebaseToken);
                                     fb.auth
                                         .signInWithCustomToken(firebaseToken)
                                         .then((user) => {
