@@ -4,7 +4,7 @@
 
 <script>
 import store from "../../store";
-import router from "./router.js";
+import router from "../../router.js";
 
 const params = window.location.search;
 const fb = require("../../backend.js");
