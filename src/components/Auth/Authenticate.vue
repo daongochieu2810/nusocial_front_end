@@ -54,12 +54,11 @@ request.post(
                                 requestCert: false,
                                 agent: false,
                             },
-                            function(error, response, request) {
+                            function(error, response, body) {
                                 if (!error) {
                                     response;
-                                    request;
                                     const firebaseToken = body;
-                                    console.log("Abc" + firebaseToken);
+                                    console.log(firebaseToken);
                                     fb.auth
                                         .signInWithCustomToken(firebaseToken)
                                         .then((user) => {
