@@ -4,13 +4,11 @@
 
 <script>
 export default {
-    created() {
+    mounted() {
         const params = window.location.search;
         const fb = require("../../backend.js");
         const request = require("request");
         const vuex = this;
-
-        this.$store.commit("toggleLoading");
 
         const code = new URLSearchParams(params).get("code");
         const url =
@@ -29,6 +27,7 @@ export default {
             },
             function(error, response, body) {
                 if (!error) {
+                    this.$store.commit("toggleLoading");
                     var accessToken = JSON.parse(body)["access_token"];
                     console.log(accessToken);
                     process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
