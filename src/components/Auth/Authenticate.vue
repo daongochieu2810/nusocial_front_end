@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import store from "./store";
+import store from "../../store";
 const params = window.location.search;
 const fb = require("../../backend.js");
 var vuex = this;
