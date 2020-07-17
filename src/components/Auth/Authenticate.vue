@@ -70,7 +70,9 @@ request.post(
                                             this.$store
                                                 .dispatch("fetchUserProfile")
                                                 .then(() => {
-                                                    this.$router.push("/");
+                                                    this.$router.push(
+                                                        "/dashboard"
+                                                    );
                                                     this.$store.commit(
                                                         "toggleLoading"
                                                     );
