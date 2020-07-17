@@ -27,7 +27,6 @@ export default {
             },
             function(error, response, body) {
                 if (!error) {
-                    this.$store.commit("toggleLoading");
                     var accessToken = JSON.parse(body)["access_token"];
                     console.log(accessToken);
                     process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
