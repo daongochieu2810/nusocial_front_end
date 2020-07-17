@@ -24,10 +24,11 @@ request.post(
     if (!error) {
       var accessToken = JSON.parse(body)["access_token"];
       console.log(accessToken);
+      process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
       request.post(
         {
           url:
-            "http://nusocial-bridge-api.herokuapp.com/profile?token=" +
+            "https://nusocial-bridge-api.herokuapp.com/profile?token=" +
             accessToken,
           headers: {
             "Content-Type": "application/x-www-form-urlencoded"
