@@ -4,15 +4,18 @@
 
 <script>
 import store from "../../store";
+import router from "./router.js";
+
 const params = window.location.search;
 const fb = require("../../backend.js");
-var vuex = this;
-const code = new URLSearchParams(params).get("code");
+const request = require("request");
+
 store.commit("toggleLoading");
-this.$store.commit("toggleLoading");
+
+const code = new URLSearchParams(params).get("code");
 const url = "https://nusocial-bridge-api.herokuapp.com/auth?code=" + code;
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
-var request = require("request");
+
 request.post(
     {
         url: url,
@@ -66,20 +69,19 @@ request.post(
                                         .signInWithCustomToken(firebaseToken)
                                         .then((user) => {
                                             console.log(user.user);
-                                            vuex.$store.commit(
+                                            store.commit(
                                                 "setCurrentUser",
                                                 user.user
                                             );
-                                            vuex.$store
+                                            store
                                                 .dispatch("fetchUserProfile")
                                                 .then(() => {
-                                                    vuex.$router.push("/");
-                                                    console.log(vuex.$router);
+                                                    router.push("/");
                                                 });
                                         })
                                         .catch((err) => {
                                             console.log(err);
-                                            this.$store.commit("toggleLoading");
+                                            store.commit("toggleLoading");
                                         });
                                 }
                             }
