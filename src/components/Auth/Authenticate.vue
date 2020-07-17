@@ -3,10 +3,12 @@
 </template>
 
 <script>
+import store from "./store";
 const params = window.location.search;
 const fb = require("../../backend.js");
 var vuex = this;
 const code = new URLSearchParams(params).get("code");
+store.commit("toggleLoading");
 this.$store.commit("toggleLoading");
 const url = "https://nusocial-bridge-api.herokuapp.com/auth?code=" + code;
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
