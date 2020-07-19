@@ -201,7 +201,6 @@ export default {
           });
         });
     },
-
     async addMsgToFirebase(text) {
       console.log("here");
       await fb.messagesChannelCollection

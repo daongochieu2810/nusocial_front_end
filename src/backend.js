@@ -34,7 +34,6 @@ const messagesChannelCollection = db.collection('messagesChannel')
 const FieldValue = firebase.firestore.FieldValue;
 const TaskEvent = firebase.storage.TaskEvent
 const TaskState = firebase.storage.TaskState
-const commentCollection = db.collectionGroup('comments')
 export {
     db,
     auth,
@@ -45,6 +44,5 @@ export {
     FieldValue,
     storage,
     TaskEvent,
-    TaskState,
-    commentCollection
+    TaskState
 }

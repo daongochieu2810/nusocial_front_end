@@ -17,7 +17,8 @@ let store = new Vuex.Store({
     userProfile: null,
     communities: [],
     all_message_channels: [],
-    notifications:[]
+    notifications:[],
+    remainsOpen: []
   },
   mutations: {
     addNotification(state, notification) {
@@ -33,10 +34,12 @@ let store = new Vuex.Store({
       state.currentUser = user
     },
     addChatbox(state,box) {
+      //if(state.remainsOpen.includes(box.id)) box.isOpen = true
       state.chatbox.push(box)
     },
     clearChatbox(state) {
-      state.chatbox = []
+      //state.remainsOpen = state.chatbox.filter(box => box.isOpen).map(box => box.id)
+      state.chatbox = []//state.chatbox.filter(box => box.isOpen)
     },
     setCommunities(state, data) {
       state.communities = data
@@ -122,6 +125,8 @@ let store = new Vuex.Store({
                 }
               }
             }
+            //console.log(holder)
+        //console.log(holder)
           });
         });
         commit("setMsgChannels", holder)

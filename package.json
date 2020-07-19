@@ -2,6 +2,9 @@
   "name": "nusocial",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "12.13.1"
+  },
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -29,9 +32,9 @@
     "portal-vue": "^2.1.7",
     "sass-loader": "^8.0.2",
     "toast": "^0.2.6",
-    "uuid": "^8.2.0",
     "v-tooltip": "^2.0.3",
     "vue": "^2.6.11",
+    "vue-axios": "^2.1.5",
     "vue-chartjs": "^3.5.0",
     "vue-js-modal": "^2.0.0-rc.3",
     "vue-quill-editor": "^3.0.6",

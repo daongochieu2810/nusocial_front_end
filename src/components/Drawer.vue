@@ -4,15 +4,16 @@
       <img src="../assets/chevron_right.png" alt="open_drawer" style=";width: 20px;height: 20px" />
     </b-button>
     <b-sidebar id="sidebar-1" title="Friends" shadow>
+      <b-form-input type="search" style="margin: 5px 5px 5px 5px;width: 95%" v-model="searchTerm"></b-form-input>
       <div class="px-3 py-2">
         <div
-          v-for="friend in chatItems"
+          v-for="friend in filteredItems"
           :key="friend.id"
           class="container"
           @click="openChat(friend.id)"
         >
           <img :src="getImage(friend.id)" alt="Avatar" />
-          <p>{{friend.recipients.length == 2 && friend.recipients[1].first == userProfile.uid ? friend.recipients[0].second : friend.recipients[1].second}}</p>
+          <p>{{getName(friend)}}</p>
         </div>
       </div>
     </b-sidebar>
@@ -22,31 +23,35 @@
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["all_message_channels", "chatbox", "userProfile"])
+    ...mapState(["all_message_channels", "chatbox", "userProfile"]),
+    filteredItems: function() {
+      if (this.searchTerm != "") {
+        return this.chatItems.filter(item =>
+          this.getName(item).includes(this.searchTerm)
+        );
+      } else return this.chatItems;
+    }
   },
   data() {
     return {
-      chatItems: []
+      chatItems: [],
+      searchTerm: ""
     };
   },
   props: {
     listOfImages: Array
   },
   watch: {
-    userProfile(newData, oldData) {
-      console.log(oldData);
-      console.log(newData);
+    userProfile: function() {
       this.$store.dispatch("fetchMessageChannels");
     },
-    all_message_channels(newValue, oldValue) {
-      console.log(oldValue);
+    all_message_channels: function() {
+      console.log("changes");
       this.$store.commit("clearChatbox");
       this.chatItems = [];
-      //console.log(this.allMsgChannels.length);
-      //console.log(this.all_message_channels);
+      let newValue = this.all_message_channels;
 
       for (let channel of newValue) {
-        console.log(channel);
         if (channel.name == "") {
           this.chatItems.push(channel);
         }
@@ -61,6 +66,12 @@ export default {
   },
   mounted() {},
   methods: {
+    getName(friend) {
+      return friend.recipients.length == 2 &&
+        friend.recipients[1].first == this.userProfile.uid
+        ? friend.recipients[0].second
+        : friend.recipients[1].second;
+    },
     openChat(id) {
       //console.log("here is " + id);
       //console.log(this.all_message_channels);
