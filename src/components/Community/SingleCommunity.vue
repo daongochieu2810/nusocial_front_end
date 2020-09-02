@@ -121,6 +121,7 @@ export default {
         .collection("posts")
         .orderBy("timeStamp", "desc")
         .onSnapshot(query => {
+          this.isLoading = false;
           query.docChanges().forEach(change => {
             var doc = change.doc;
             //this.allPosts.push(doc.data());
@@ -193,7 +194,6 @@ export default {
                 );
               }
             }
-            this.isLoading = false;
           });
         });
     }

@@ -27,7 +27,9 @@ export default {
     filteredItems: function() {
       if (this.searchTerm != "") {
         return this.chatItems.filter(item =>
-          this.getName(item).includes(this.searchTerm)
+          this.getName(item)
+            .toLowerCase()
+            .includes(this.searchTerm.toLowerCase())
         );
       } else return this.chatItems;
     }
