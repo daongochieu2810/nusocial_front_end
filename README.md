@@ -1,7 +1,7 @@
 # nusocial
 
 The admin website for users using NUSocial Mobile App
-![Link to website](https://nusocial-admin.herokuapp.com/)
+[Link to website]: https://nusocial-admin.herokuapp.com/
 
 ## Project setup
 
